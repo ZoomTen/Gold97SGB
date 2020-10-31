@@ -10,6 +10,7 @@ Music_MainMenu_Ch1:
 	volume 7, 7
 	duty_cycle 3
 	pitch_offset 1
+	transpose 0, 1
 	vibrato 16, 1, 5
 	stereo_panning TRUE, FALSE
 	note_type 12, 0, -7
@@ -45,6 +46,7 @@ Music_MainMenu_Ch1:
 
 Music_MainMenu_Ch2:
 	duty_cycle 3
+	transpose 0, 1
 	stereo_panning FALSE, TRUE
 	note_type 12, 0, -7
 	octave 3
@@ -75,6 +77,7 @@ Music_MainMenu_Ch2:
 	sound_loop 0, .mainloop
 
 Music_MainMenu_Ch3:
+	transpose 0, 1
 	stereo_panning TRUE, FALSE
 	note_type 12, 2, 5
 	rest 8

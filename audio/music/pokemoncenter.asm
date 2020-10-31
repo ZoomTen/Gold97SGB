@@ -1,9 +1,8 @@
 Music_PokemonCenter:
-	channel_count 4
+	channel_count 3
 	channel 1, Music_PokemonCenter_Ch1
 	channel 2, Music_PokemonCenter_Ch2
 	channel 3, Music_PokemonCenter_Ch3
-	channel 4, Music_PokemonCenter_Ch4
 
 Music_PokemonCenter_Ch1:
 	tempo 152
@@ -155,6 +154,7 @@ Music_PokemonCenter_Ch2:
 .mainloop:
 	stereo_panning TRUE, TRUE
 	sound_call .sub1
+	duty_cycle 3
 	stereo_panning FALSE, TRUE
 	note_type 12, 10, 5
 	octave 3
@@ -165,6 +165,7 @@ Music_PokemonCenter_Ch2:
 	note D_, 2
 	note F#, 6
 	stereo_panning FALSE, TRUE
+	duty_cycle 3
 	note_type 12, 10, 5
 	octave 3
 	note A_, 4
@@ -172,6 +173,7 @@ Music_PokemonCenter_Ch2:
 	stereo_panning TRUE, TRUE
 	sound_call .sub1
 	stereo_panning FALSE, TRUE
+	duty_cycle 3
 	note_type 12, 10, 5
 	octave 3
 	note A_, 4
@@ -180,10 +182,12 @@ Music_PokemonCenter_Ch2:
 	sound_call .sub2
 	note D_, 8
 	stereo_panning FALSE, TRUE
+	duty_cycle 3
 	note_type 12, 10, 5
 	octave 3
 	note D_, 4
 	note E_, 4
+	duty_cycle 2
 	note_type 12, 12, 6
 	octave 4
 	note F#, 8
@@ -236,6 +240,7 @@ Music_PokemonCenter_Ch2:
 	sound_ret
 
 .sub2:
+	duty_cycle 2
 	note_type 12, 12, 2
 	octave 4
 	note C#, 2
@@ -250,7 +255,7 @@ Music_PokemonCenter_Ch2:
 	sound_ret
 
 Music_PokemonCenter_Ch3:
-	note_type 12, 2, 8
+	note_type 12, 1, 6
 .mainloop:
 	stereo_panning TRUE, FALSE
 	octave 3
@@ -391,15 +396,3 @@ Music_PokemonCenter_Ch3:
 	note A_, 1
 	rest 1
 	sound_ret
-
-Music_PokemonCenter_Ch4:
-	toggle_noise 3
-	drum_speed 12
-	stereo_panning TRUE, TRUE
-.mainloop:
-	drum_note 8, 6
-	drum_note 8, 4
-	drum_note 8, 2
-	drum_note 8, 2
-	drum_note 8, 2
-	sound_loop 0, .mainloop

@@ -260,8 +260,10 @@ ROMX $70
 	"Tileset Data 6"
 	"bank70_2"
 ROMX $7f
+	"Songs 5"
 	org $7df8
 	"Stadium Data"
+
 WRAM0
 	"Audio RAM"
 	"WRAM"

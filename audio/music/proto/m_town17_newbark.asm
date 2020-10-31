@@ -34,6 +34,7 @@ Town073_Ch1:
 	vibrato 18, 1, 5
 	note_type 12, 12, 2
 	rest 4
+	stereo_panning FALSE, TRUE
 ; P1-1
 .loop10
 	note_type 12, 12, 2
@@ -259,6 +260,7 @@ Town073_Ch3:
 ;----------------------------------------
 	note_type 12, 1, 3
 	rest 4
+	stereo_panning TRUE, FALSE
 ; P3-1
 .loop30
 	octave 4

@@ -27,9 +27,8 @@ Town073:
 ;----------------------------------------
 Town073_Ch1:
 ;----------------------------------------
-	tempo 168
+	tempo 165
 	volume 7, 7
-	duty_cycle 3
 	pitch_offset 1
 	vibrato 18, 1, 5
 	note_type 12, 12, 2
@@ -39,6 +38,7 @@ Town073_Ch1:
 .loop10
 	note_type 12, 12, 2
 	octave 3
+	duty_cycle 2
 	note F_,2
 ; P1-2 --- tied
 	note D_,2
@@ -53,12 +53,14 @@ Town073_Ch1:
 	note D_,2
 	note A#,2
 	note D_,2
+	duty_cycle 3
 	note D_,2
 	note C_,2
 	octave 2
 	note A#,2
 	note A_,2
 ; P1-4
+	duty_cycle 2
 	octave 3
 	note D#,2
 	note C_,2
@@ -73,11 +75,13 @@ Town073_Ch1:
 	note C_,2
 	note A_,2
 	note C_,2
+	duty_cycle 3
 	note A_,2
 	note G_,2
 	note A_,2
 	note F_,2
 ; P1-6
+	duty_cycle 2
 	note F_,2
 	note D_,2
 	note A#,2
@@ -91,11 +95,13 @@ Town073_Ch1:
 	note D_,2
 	note A#,2
 	note A_,2
+	duty_cycle 3
 	note A#,2
 	note A_,2
 	note G_,2
 	note F_,2
 ; P1-8
+	duty_cycle 2
 	note D#,2
 	note C_,2
 	note G_,2
@@ -118,6 +124,7 @@ Town073_Ch1:
 	octave 3
 	note F_,2
 ; P1-10
+	duty_cycle 2
 	note_type 12, 12, 7
 	octave 4
 	note C_,6
@@ -152,18 +159,15 @@ Town073_Ch1:
 	octave 4
 	note D_,4
 ; P1-17
-	note F_,12
-	octave 3
-	note A#,2
-	octave 4
-	note C_,2
+	note F_,16
 	db sound_loop_cmd, 0
 	dw .loop10
 ;----------------------------------------
 Town073_Ch2:
 ;----------------------------------------
 	duty_cycle 3
-	vibrato 8, 2, 6
+	vibrato 12, 2, 6
+.loop20
 	note_type 12, 13, 3
 ; P2-1
 	octave 3
@@ -171,7 +175,6 @@ Town073_Ch2:
 	octave 4
 	note C_,2
 ; P2-2
-.loop20
 	note_type 12, 13, 4
 	note D_,4
 	note F_,4
@@ -252,18 +255,18 @@ Town073_Ch2:
 	note F_,6
 	note A#,4
 ; P2-17
-	note A_,16
+	note A_,12
 	db sound_loop_cmd, 0
 	dw .loop20
 ;----------------------------------------
 Town073_Ch3:
 ;----------------------------------------
-	note_type 12, 1, 3
+	note_type 12, 1, 6
 	rest 4
 	stereo_panning TRUE, FALSE
 ; P3-1
 .loop30
-	octave 4
+	octave 3
 	note F_,6
 ; P3-2
 	note D_,6
@@ -303,15 +306,15 @@ Town073_Ch3:
 ; P3-11
 	note A_,2
 	note F_,2
-	octave 5
-	note C_,2
 	octave 4
+	note C_,2
+	octave 3
 	note F_,2
 	note A_,2
 	note F_,2
-	octave 5
-	note C_,2
 	octave 4
+	note C_,2
+	octave 3
 	note F_,2
 ; P3-12
 	note G_,6
@@ -320,13 +323,13 @@ Town073_Ch3:
 ; P3-13
 	note A_,2
 	note F_,2
-	octave 5
+	octave 4
 	note C_,2
 	note D_,2
 	note D#,2
 	note D_,2
 	note C_,2
-	octave 4
+	octave 3
 	note A_,2
 ; P3-14
 	note G_,6
@@ -335,20 +338,20 @@ Town073_Ch3:
 ; P3-15
 	note A_,2
 	note F_,2
-	octave 5
-	note C_,2
 	octave 4
+	note C_,2
+	octave 3
 	note F_,2
 	note A_,2
 	note F_,2
-	octave 5
-	note C_,2
 	octave 4
+	note C_,2
+	octave 3
 	note F_,2
 ; P3-16
 	note G_,6
 	note A#,6
-	octave 5
+	octave 4
 	note D_,4
 ; P3-17
 	note F_,6
@@ -371,12 +374,12 @@ Town073_Ch4:
 	rest 5
 	drum_note 7,1
 	rest 1
-	drum_note 7,1
+	drum_note 2,1
 	rest 1
 ; P4-3
 	drum_note 7,1
 	rest 5
-	drum_note 7,1
+	drum_note 8,1
 	rest 5
 	drum_note 7,1
 	rest 3
@@ -387,12 +390,12 @@ Town073_Ch4:
 	rest 5
 	drum_note 7,1
 	rest 1
-	drum_note 7,1
+	drum_note 2,1
 	rest 1
 ; P4-5
 	drum_note 7,1
 	rest 5
-	drum_note 7,1
+	drum_note 8,1
 	rest 5
 	drum_note 7,1
 	rest 3
@@ -403,12 +406,12 @@ Town073_Ch4:
 	rest 5
 	drum_note 7,1
 	rest 1
-	drum_note 7,1
+	drum_note 2,1
 	rest 1
 ; P4-7
 	drum_note 7,1
 	rest 5
-	drum_note 7,1
+	drum_note 8,1
 	rest 5
 	drum_note 7,1
 	rest 3
@@ -419,16 +422,16 @@ Town073_Ch4:
 	rest 5
 	drum_note 7,1
 	rest 1
-	drum_note 7,1
+	drum_note 2,1
 	rest 1
 ; P4-9
 	drum_note 7,1
 	rest 5
-	drum_note 7,1
+	drum_note 2,1
 	rest 3
 	drum_note 7,1
 	rest 1
-	drum_note 7,1
+	drum_note 2,1
 	rest 1
 	drum_note 7,1
 	rest 3
@@ -439,9 +442,9 @@ Town073_Ch4:
 	rest 3
 	drum_note 7,1
 	rest 1
-	drum_note 7,1
+	drum_note 8,1
 	rest 1
-	drum_note 7,1
+	drum_note 8,1
 	rest 1
 ; P4-11
 	drum_note 7,1
@@ -459,9 +462,9 @@ Town073_Ch4:
 	rest 3
 	drum_note 7,1
 	rest 1
-	drum_note 7,1
+	drum_note 8,1
 	rest 1
-	drum_note 7,1
+	drum_note 8,1
 	rest 1
 ; P4-13
 	drum_note 7,1
@@ -477,9 +480,9 @@ Town073_Ch4:
 	rest 3
 	drum_note 7,1
 	rest 1
-	drum_note 7,1
+	drum_note 8,1
 	rest 1
-	drum_note 7,1
+	drum_note 8,1
 	rest 1
 ; P4-15
 	drum_note 7,1
@@ -497,9 +500,9 @@ Town073_Ch4:
 	rest 3
 	drum_note 7,1
 	rest 1
-	drum_note 7,1
+	drum_note 2,1
 	rest 1
-	drum_note 7,1
+	drum_note 8,1
 	rest 1
 ; P4-17
 	drum_note 7,1
@@ -508,7 +511,7 @@ Town073_Ch4:
 	rest 3
 	drum_note 7,1
 	rest 1
-	drum_note 7,1
+	drum_note 8,1
 	rest 1
 	drum_note 7,1
 	rest 1

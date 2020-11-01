@@ -1,4 +1,4 @@
-VERSION_NUMBER := 1.15
+VERSION_NUMBER := 2.00
 
 roms := pokegold.gbc
 

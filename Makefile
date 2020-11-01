@@ -1,4 +1,6 @@
-roms := pokegold.gbc pokesilver.gbc
+VERSION_NUMBER := 1.15
+
+roms := pokegold.gbc
 
 rom_obj := \
 audio.o \
@@ -74,8 +76,8 @@ ifeq ($(DEBUG),1)
 RGBASMFLAGS += -E
 endif
 
-$(gold_obj):   RGBASMFLAGS += -D _GOLD
-$(silver_obj): RGBASMFLAGS += -D _SILVER
+$(gold_obj):   RGBASMFLAGS += -D _GOLD   -D VERSION='"v${VERSION_NUMBER}"'
+$(silver_obj): RGBASMFLAGS += -D _SILVER -D VERSION='"v${VERSION_NUMBER}"'
 
 rgbdscheck.o: rgbdscheck.asm
 	$(RGBASM) -o $@ $<

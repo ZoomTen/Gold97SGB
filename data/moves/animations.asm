@@ -411,8 +411,8 @@ BattleAnim_ThrowPokeBall:
 	anim_ret
 
 BattleAnim_SendOutMon:
-	anim_if_param_equal $0, .Normal
-	anim_if_param_equal $1, .Shiny
+	anim_if_param_equal $0, .Unknown
+	anim_if_param_equal $1, .Unknown
 	anim_if_param_equal $2, .Unknown
 	anim_1gfx ANIM_GFX_SMOKE
 	anim_call BattleAnim_TargetObj_1Row

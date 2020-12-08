@@ -196,10 +196,6 @@ DoAnimFrame:
 	ld [hl], a
 
 .Function8d576
-	ld de, $0201
-	ldh a, [hSGB]
-	and a
-	jr z, .asm_8d581
 	ld de, $0402
 
 .asm_8d581

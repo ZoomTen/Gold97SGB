@@ -702,10 +702,6 @@ Intro_InitBubble:
 	db  8 * 8, 17 * 8
 
 Intro_InitMagikarps:
-	depixel 8, 7, 0, 7
-	ldh a, [hSGB]
-	and a
-	jr z, .ok
 	depixel 4, 3, 0, 7
 
 .ok

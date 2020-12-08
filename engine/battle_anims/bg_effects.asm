@@ -1757,6 +1757,9 @@ BattleBGEffect_BounceDown:
 	ret
 
 BattleBGEffect_29:
+	ld a, [hCGB]
+	and a
+	ret nz		; this effect cannot play on gameboy color
 	call BattleBGEffects_AnonJumptable
 .anon_dw
 	dw .zero
@@ -1849,7 +1852,6 @@ BattleBGEffect_29:
 	add hl, bc
 	ld a, [hl]
 	inc [hl]
-	srl a
 	srl a
 	srl a
 	ld e, a

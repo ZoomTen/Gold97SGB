@@ -330,14 +330,12 @@ Movement_TeacherBringsYouBack2_NBT:
 	step_end
 
 Movement_SilverPushesYouAway_NBT:
-	turn_head RIGHT
-	step RIGHT
 	turn_head DOWN
+	slow_step DOWN
 	step DOWN
 	step DOWN
-	step DOWN
-	step DOWN
-	step DOWN
+	big_step DOWN
+	big_step DOWN
 	step_end
 
 Movement_SilverShovesYouOut_NBT:
@@ -348,12 +346,12 @@ Movement_SilverShovesYouOut_NBT:
 	step_end
 
 Movement_SilverComesFromTheShadows_NBT:
+	big_step UP
+	big_step UP
 	step UP
 	step UP
-	step UP
-	step UP
-	step UP
-	step LEFT
+	slow_step UP
+	turn_head LEFT
 	step_end
 	
 Movement_PlayerTurnsHead:
@@ -511,5 +509,5 @@ SilentTown_MapEvents:
 	db 4 ; object events
 	object_event  9,  6, SPRITE_TEACHER, SPRITEMOVEDATA_SPINRANDOM_SLOW, 1, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SilentTownTeacherScript, -1
 	object_event 12, 13, SPRITE_SUPER_NERD, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1,  0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, SilentTownFisherScript, -1
-	object_event  7, 10, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SilentTownRivalScript, EVENT_RIVAL_SILENT_TOWN
+	object_event  6, 10, SPRITE_SILVER, SPRITEMOVEDATA_STANDING_UP, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SilentTownRivalScript, EVENT_RIVAL_SILENT_TOWN
 	object_event  3,  9, SPRITE_BLUE, SPRITEMOVEDATA_STANDING_LEFT, 0, 0, -1, -1, 0, OBJECTTYPE_SCRIPT, 0, SilentTownBlueScript, EVENT_BLUE_SILENT_TOWN

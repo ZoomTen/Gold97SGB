@@ -299,8 +299,8 @@ Movement_TeacherRunsToYou1_NBT:
 	step LEFT
 	step LEFT
 	step LEFT
-	step LEFT
-	step LEFT
+	slow_step LEFT
+	slow_step LEFT
 	step_end
 
 Movement_TeacherRunsToYou2_NBT:

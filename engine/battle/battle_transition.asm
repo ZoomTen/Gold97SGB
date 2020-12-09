@@ -3,8 +3,11 @@ BATTLETRANSITION_CAVE             EQU $01
 BATTLETRANSITION_CAVE_STRONGER    EQU $09
 BATTLETRANSITION_NO_CAVE          EQU $10
 BATTLETRANSITION_NO_CAVE_STRONGER EQU $18
-BATTLETRANSITION_SCANLINES           EQU $20
-BATTLETRANSITION_FINISH           EQU $28
+
+BATTLETRANSITION_SCANLINES        EQU $20
+BATTLETRANSITION_BLINDS           EQU $28
+
+BATTLETRANSITION_FINISH           EQU $2F
 BATTLETRANSITION_END              EQU $80
 
 BATTLETRANSITION_SQUARE EQU "8" ; $fe
@@ -156,8 +159,17 @@ BattleTransitionJumptable:
 	dw StartTrainerBattle_SetUpForScanlineOutro ; 26
 	dw StartTrainerBattle_DoScanlines ; 27
 
+	; BATTLETRANSITION_WIPE
+	dw StartTrainerBattle_LoadPokeBallGraphics ; 28
+	dw StartTrainerBattle_SetUpBGMap ; 29
+	dw StartTrainerBattle_Flash ; 2a
+	dw StartTrainerBattle_Flash ; 2b
+	dw StartTrainerBattle_Flash ; 2c
+	dw StartTrainerBattle_SetUpForWipeOutro ; 2d
+	dw StartTrainerBattle_WipeOutro ; 2e
+
 	; BATTLETRANSITION_FINISH
-	dw StartTrainerBattle_Finish ; 28
+	dw StartTrainerBattle_Finish ; 2F
 
 ; transition animations
 	const_def
@@ -165,8 +177,6 @@ BattleTransitionJumptable:
 	const TRANS_CAVE_STRONGER
 	const TRANS_NO_CAVE
 	const TRANS_NO_CAVE_STRONGER
-
-	const TRANS_SCANLINES
 
 ; transition animation bits
 TRANS_STRONGER_F EQU 0 ; bit set in TRANS_CAVE_STRONGER and TRANS_NO_CAVE_STRONGER
@@ -177,11 +187,21 @@ StartTrainerBattle_DetermineWhichAnimation:
 ; your lead Pokemon relative to the opponent's.
 ; BUG: wBattleMonLevel and wEnemyMonLevel are not set at this point, so whatever
 ; values happen to be there will determine the animation.
-	;;;; force SW97 ;;;;
+	ld a, [wOtherTrainerClass]
+	and a
+	jr z, .check_wild
+
+	farcall IsGymLeader
+	jr c, .gym_leader
+
 	ld a, BATTLETRANSITION_SCANLINES
-	ld [wJumptableIndex], a
-	ret
-	;;;;;;;;;;;;;;;;;;;;
+	jr .got_transition_type
+
+.gym_leader
+	ld a, BATTLETRANSITION_BLINDS
+	jr .got_transition_type
+
+.check_wild
 	ld de, 0
 	ld a, [wBattleMonLevel]
 	add 3
@@ -202,6 +222,7 @@ StartTrainerBattle_DetermineWhichAnimation:
 	ld hl, .StartingPoints
 	add hl, de
 	ld a, [hl]
+.got_transition_type
 	ld [wJumptableIndex], a
 	ret
 
@@ -211,7 +232,6 @@ StartTrainerBattle_DetermineWhichAnimation:
 	db BATTLETRANSITION_CAVE_STRONGER
 	db BATTLETRANSITION_NO_CAVE
 	db BATTLETRANSITION_NO_CAVE_STRONGER
-	db BATTLETRANSITION_SCANLINES
 
 StartTrainerBattle_SetUpForScanlineOutro:	; SW97 transition
 	call StartTrainerBattle_NextScene
@@ -258,6 +278,54 @@ StartTrainerBattle_DoScanlines:		; SW97 transition
 	inc hl
 	dec c
 	jr nz, .continue_split_even_odd
+	ret
+
+StartTrainerBattle_SetUpForWipeOutro:
+	call StartTrainerBattle_NextScene
+	ld a, LOW(rSCY)
+	ldh [hLCDCPointer], a
+	xor a
+	ldh [hLYOverrideStart], a
+	ld a, SCREEN_HEIGHT_PX
+	ldh [hLYOverrideEnd], a
+	xor a
+	ld [wce64], a
+	ld a, SCREEN_HEIGHT_PX + 1
+	ldh [hSCY], a
+	ret
+
+StartTrainerBattle_WipeOutro:
+	ld hl, wce64
+	ld a, [hl]
+	cp $48
+	jr nc, .end
+	inc [hl]
+	srl a
+	ld e, a
+	ld d, 0
+	ld hl, wLYOverrides
+	add hl, de
+	call .DoWipeOutro
+	ret
+
+.end
+	ld a, BATTLETRANSITION_FINISH
+	ld [wJumptableIndex], a
+	ret
+
+.DoWipeOutro:
+	ld c, 4
+	ld de, SCREEN_HEIGHT_PX / 4
+	ld b, SCREEN_HEIGHT_PX + 1
+.loop
+	ld a, b
+	sub l
+	ld [hl], a
+	add hl, de
+	dec c
+	jr nz, .loop
+	ld hl, wLYOverridesEnd + 1
+	ld [hl], SCREEN_HEIGHT_PX + 1
 	ret
 
 StartTrainerBattle_Finish:

@@ -445,18 +445,18 @@ _CGB_GSIntro:
 	ret
 
 .ShellderLaprasBGPalette:;31,31,31, 15,29,27, 12,23,27, 03,16,14
-	RGB 28, 28, 28
+	RGB 31, 31, 31
 	RGB 15, 29, 27
 	RGB 12, 23, 27
 	RGB 03, 16, 14
 
 .ShellderLaprasOBPals:
-	RGB 28, 28, 28
+	RGB 31, 31, 31
 	RGB 15, 29, 27
 	RGB 12, 23, 27
 	RGB 03, 16, 14
 
-	RGB 28, 28, 28
+	RGB 31, 31, 31
 	RGB 15, 29, 27
 	RGB 12, 23, 27
 	RGB 03, 16, 14
@@ -963,7 +963,7 @@ _CGB_MysteryGift:
 	ret
 
 .MysteryGiftPalette:
-	RGB 28, 28, 28
+	RGB 31, 31, 31
 	RGB 09, 31, 31
 	RGB 10, 12, 31
 	RGB 00, 03, 19

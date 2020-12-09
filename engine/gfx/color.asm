@@ -161,13 +161,13 @@ Function9102:
 	ret
 
 .BGPal:; lapras intro
-	RGB 28, 28, 28
+	RGB 31, 31, 31
 	RGB 15, 29, 27
 	RGB 12, 23, 27
 	RGB 03, 16, 14
 
 .OBPal:
-	RGB 28, 28, 28
+	RGB 31, 31, 31
 	RGB 15, 29, 27
 	RGB 12, 23, 27
 	RGB 03, 16, 14
@@ -463,10 +463,9 @@ LoadPalette_White_Col1_Col2_Black:
 	dec c
 	jr nz, .loop
 
-	ld a, LOW(PALRGB_BLACK)
+	xor a
 	ld [de], a
 	inc de
-	ld a, HIGH(PALRGB_BLACK)
 	ld [de], a
 	inc de
 	ret

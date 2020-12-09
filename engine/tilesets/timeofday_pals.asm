@@ -127,7 +127,7 @@ FadeInQuickly:
 	ld c, 3 * 6
 	call GetTimePalFade
 	ld b, $4
-	call ConvertTimePalsIncHL
+	call ConvertTimePalsDecHL
 	ret
 
 FadeBlackQuickly:

@@ -1,4 +1,4 @@
-	const_def 2 ; object constants
+	object_const_def ; object_event constants
 	const SILENTTOWN_TEACHER
 	const SILENTTOWN_FISHER
 	const SILENTTOWN_SILVER
@@ -10,8 +10,9 @@ SilentTown_MapScripts:
 	scene_script .DummyScene1 ; SCENE_FINISHED
 
 	db 2 ; callbacks
-	callback MAPCALLBACK_NEWMAP, .FlyPoint
+	callback MAPCALLBACK_NEWMAP, .FlyPointAndFixSaves
 	callback MAPCALLBACK_TILES, .ClearRocks
+	
 
 .ClearRocks:
 	checkevent EVENT_ROUTE_115_ROCKS_DEMOLISHED
@@ -29,9 +30,18 @@ SilentTown_MapScripts:
 .DummyScene1:
 	end
 	
-.FlyPoint:
+.FlyPointAndFixSaves:
 	setflag ENGINE_FLYPOINT_SILENT
 	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
+	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
+	iffalse .DontFixSaves
+	setevent EVENT_RIVAL_OAK_LAB_FRONT_ROOM_2
+	setevent EVENT_OAK_LAB_DEX_TABLE
+	setevent EVENT_OAK_OAK_LAB_FRONT_ROOM
+	setevent EVENT_BLUE_IN_OAK_LAB_BACK_ROOM
+	return
+	
+.DontFixSaves
 	return
 	
 SilentTownPokecenterSign:
@@ -61,6 +71,9 @@ SilentTown_RivalGreets:
 	setevent EVENT_BLUE_OAK_LAB_FRONT_ROOM
 	setevent EVENT_DAISY_OAK_LAB_FRONT_ROOM
 	setevent EVENT_PAGOTA_GYM_FALKNER
+	setevent EVENT_OAK_OAK_LAB_FRONT_ROOM
+	setevent EVENT_RIVAL_OAK_LAB_FRONT_ROOM_2
+	setevent EVENT_BLUE_OAK_LAB_FRONT_ROOM_2
 	setmapscene RADIO_TOWER_6F, SCENE_RADIOTOWER6F_NOTHING; this makes it so the giovanni scene plays, was missed for a while
 	end
 
@@ -72,35 +85,9 @@ SilentTown_TeacherStopsYouScene2:
 	closetext
 	showemote EMOTE_SHOCK, PLAYER, 15
 	turnobject PLAYER, RIGHT
-	moveobject SILENTTOWN_BLUE, 7, 9
-	appear SILENTTOWN_BLUE
-	applymovement SILENTTOWN_BLUE, Movement_TeacherRunsToYou1_NBT
-	opentext
-	writetext Text_WhatDoYouThinkYoureDoing
-	waitbutton
-	closetext
-	follow SILENTTOWN_BLUE, PLAYER
-	applymovement SILENTTOWN_BLUE, Movement_TeacherBringsYouBack1_NBT
-	stopfollow
-	opentext
-	writetext Text_ItsDangerousToGoAlone
-	waitbutton
-	closetext
-	follow SILENTTOWN_BLUE, PLAYER
-	applymovement SILENTTOWN_BLUE, Movement_BlueTakesToLab
-	stopfollow
-	applymovement SILENTTOWN_BLUE, Movement_BlueIntoLab
-	playsound SFX_ENTER_DOOR
-	disappear SILENTTOWN_BLUE
-	setevent EVENT_RIVAL_OAK_LAB_FRONT_ROOM
-	setmapscene OAK_LAB_FRONT_ROOM, SCENE_HEAD_TO_THE_BACK
-	setmapscene OAK_LAB_BACK_ROOM, SCENE_DEFAULT
-	clearevent EVENT_BLUE_OAK_LAB_FRONT_ROOM
-	applymovement PLAYER, Movement_PlayerIntoLab
-	playsound SFX_ENTER_DOOR
-	special FadeOutPalettes
-	warpfacing UP, OAK_LAB_FRONT_ROOM, 4, 15
+	jump SilentTown_TeacherStopsYouScene3
 	end
+
 
 SilentTown_TeacherStopsYouScene1:
 	playmusic MUSIC_SHOW_ME_AROUND
@@ -111,6 +98,10 @@ SilentTown_TeacherStopsYouScene1:
 	showemote EMOTE_SHOCK, PLAYER, 15
 	applymovement PLAYER, Movement_OneDown
 	turnobject PLAYER, RIGHT
+	jump SilentTown_TeacherStopsYouScene3
+	end
+	
+SilentTown_TeacherStopsYouScene3:
 	moveobject SILENTTOWN_BLUE, 7, 9
 	appear SILENTTOWN_BLUE
 	applymovement SILENTTOWN_BLUE, Movement_TeacherRunsToYou1_NBT
@@ -132,9 +123,11 @@ SilentTown_TeacherStopsYouScene1:
 	playsound SFX_ENTER_DOOR
 	disappear SILENTTOWN_BLUE
 	setevent EVENT_RIVAL_OAK_LAB_FRONT_ROOM
+	clearevent EVENT_RIVAL_OAK_LAB_FRONT_ROOM_2
 	setmapscene OAK_LAB_FRONT_ROOM, SCENE_HEAD_TO_THE_BACK
 	setmapscene OAK_LAB_BACK_ROOM, SCENE_DEFAULT
 	clearevent EVENT_BLUE_OAK_LAB_FRONT_ROOM
+	clearevent EVENT_OAK_OAK_LAB_FRONT_ROOM
 	applymovement PLAYER, Movement_PlayerIntoLab
 	playsound SFX_ENTER_DOOR
 	special FadeOutPalettes
@@ -265,7 +258,7 @@ SilentTownRivalsHouseSign:
 	
 Movement_PlayerIntoLab:
 	step RIGHT
-	step UP
+	slow_step UP
 	step_end
 	
 Movement_BlueIntoLab:

@@ -254,7 +254,7 @@ ConvertTimePalsIncHL:
 	inc hl
 	inc hl
 	inc hl
-	ld c, 2
+	ld c, 8
 	call DelayFrames
 	dec b
 	jr nz, .loop
@@ -266,7 +266,7 @@ ConvertTimePalsDecHL:
 	dec hl
 	dec hl
 	dec hl
-	ld c, 2
+	ld c, 8
 	call DelayFrames
 	dec b
 	jr nz, .loop

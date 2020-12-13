@@ -1030,8 +1030,9 @@ IntroScene9:
 	ld hl, .palettes
 	add hl, de
 	ld a, [hl]
-	cp -1
+	and a
 	jr z, .next
+
 	call DmgToCgbBGPals
 	ld hl, hSCY
 	inc [hl]
@@ -1045,9 +1046,16 @@ IntroScene9:
 	ret
 
 .palettes
-	db %11100100, %11100100, %11100100, %11100100
-	db %11100100, %10010000, %01000000, %00000000
-	db -1
+; fade out to black
+	db %11100100
+	db %11100100
+	db %11100100
+	db %11100100
+	db %11100100
+	db %11111001
+	db %11111110
+	db %11111111
+	db 0
 
 	ret ; unused
 

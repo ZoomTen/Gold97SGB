@@ -416,7 +416,7 @@ Music_NihonWildBattle_Ch2:
 	sound_ret
 
 Music_NihonWildBattle_Ch3:
-	note_type 12, 1, 4
+	note_type 12, 1, 2
 .body:
 	octave 4
 	note G_, 2

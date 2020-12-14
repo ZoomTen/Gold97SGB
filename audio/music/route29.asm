@@ -8,13 +8,14 @@ Music_Route101:
 Music_Route101_Ch1:
 	tempo 146
 	volume 7, 7
-	duty_cycle 3
+	duty_cycle 2
 	pitch_offset 1
 	vibrato 16, 1, 5
 	stereo_panning FALSE, TRUE
-	note_type 12, 11, 2
+	note_type 12, 11, 1
 	rest 2
 .mainloop:
+	note_type 12, 12, 1
 	rest 2
 	octave 4
 	note C_, 2
@@ -170,9 +171,9 @@ Music_Route101_Ch1:
 	sound_loop 0, .mainloop
 
 Music_Route101_Ch2:
-	duty_cycle 3
+	duty_cycle 2
 	vibrato 18, 3, 6
-	note_type 12, 12, 2
+	note_type 12, 12, 1
 	octave 4
 	note C_, 1
 	note D_, 1
@@ -297,6 +298,7 @@ Music_Route101_Ch2:
 	note C_, 2
 	note C_, 2
 	octave 4
+	note_type 12, 12, 1
 	note C_, 1
 	note D_, 1
 	sound_loop 0, .mainloop
@@ -334,8 +336,8 @@ Music_Route101_Ch2:
 
 Music_Route101_Ch3:
 	stereo_panning TRUE, FALSE
-	note_type 12, 2, 5
-	vibrato 9, 2, 7
+	note_type 12, 1, 3
+	vibrato 9, 2, 5
 	rest 2
 .mainloop:
 	rest 2
@@ -503,19 +505,19 @@ Music_Route101_Ch3:
 
 Music_Route101_Ch4:
 	stereo_panning FALSE, TRUE
-	toggle_noise 0
+	toggle_noise 1
 	drum_speed 12
 	rest 2
 .mainloop:
 	rest 2
-	drum_note 6, 2
-	drum_note 6, 6
-	drum_note 6, 2
-	drum_note 6, 2
-	drum_note 6, 2
+	drum_note 8, 2
+	drum_note 8, 6
+	drum_note 8, 2
+	drum_note 8, 2
+	drum_note 8, 2
 	rest 2
-	drum_note 6, 4
-	drum_note 6, 4
-	drum_note 6, 2
-	drum_note 6, 4
+	drum_note 8, 4
+	drum_note 8, 4
+	drum_note 8, 2
+	drum_note 8, 4
 	sound_loop 0, .mainloop

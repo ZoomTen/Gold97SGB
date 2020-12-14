@@ -86,7 +86,6 @@ INCLUDE "audio/music/gymleadervictory.asm"
 INCLUDE "audio/music/mtmoonsquare.asm"
 INCLUDE "audio/music/gym.asm"
 INCLUDE "audio/music/kobanisland.asm"
-INCLUDE "audio/music/profoakspokemontalk.asm"
 INCLUDE "audio/music/profoak.asm"
 INCLUDE "audio/music/lookrival.asm"
 INCLUDE "audio/music/aftertherivalfight.asm"
@@ -121,6 +120,7 @@ SECTION "Extra Songs 1", ROMX
 
 INCLUDE "audio/music/credits.asm"
 INCLUDE "audio/music/silenttown.asm"
+INCLUDE "audio/music/profoakspokemontalk.asm"
 
 
 SECTION "Extra Songs 2", ROMX

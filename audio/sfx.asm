@@ -139,24 +139,24 @@ Sfx_Save:
 
 Sfx_Save_Ch5:
 	duty_cycle 2
-	square_note 2, 15, 1, 1792
-	square_note 1, 14, 1, 1536
-	square_note 1, 14, 1, 1664
-	square_note 1, 14, 1, 1728
-	square_note 2, 14, 1, 1792
-	square_note 2, 14, 1, 1984
+	square_note 4, 15, 4, 1792
+	square_note 2, 14, 4, 1536
+	square_note 2, 14, 4, 1664
+	square_note 2, 14, 4, 1728
+	square_note 2, 14, 4, 1792
+	square_note 2, 14, 4, 1952
 	square_note 15, 15, 2, 2016
 	sound_ret
 
 Sfx_Save_Ch6:
 	duty_cycle 2
-	square_note 2, 0, 8, 0
-	square_note 2, 10, 1, 1793
-	square_note 1, 9, 1, 1537
-	square_note 1, 9, 1, 1665
-	square_note 1, 9, 1, 1729
-	square_note 2, 9, 1, 1793
-	square_note 2, 9, 1, 1985
+	square_note 4, 0, 8, 0
+	square_note 2, 13, 4, 1793
+	square_note 2, 12, 4, 1537
+	square_note 2, 12, 4, 1665
+	square_note 2, 12, 4, 1729
+	square_note 2, 12, 4, 1793
+	square_note 2, 12, 4, 1953
 	square_note 15, 13, 2, 2017
 	sound_ret
 
@@ -547,61 +547,68 @@ Sfx_DexFanfare5079_Ch8:
 	sound_ret
 
 Sfx_KeyItem:
-	channel_count 4
+	channel_count 3
 	channel 5, Sfx_KeyItem_Ch5
 	channel 6, Sfx_KeyItem_Ch6
 	channel 7, Sfx_KeyItem_Ch7
-	channel 8, Sfx_KeyItem_Ch8
+	;channel 8, Sfx_KeyItem_Ch8
 
 Sfx_KeyItem_Ch5:
 	toggle_sfx
-	tempo 120
+	tempo 256
 	volume 7, 7
+
+	vibrato 6, 2, 6
 	duty_cycle 2
+;; P1-1
 	note_type 6, 11, 1
 	octave 3
-	note B_, 4
+	note G#, 2
+	note G#, 2
+	note_type 6, 11, 3
+	note G#, 2
 	note B_, 2
-	note B_, 2
-	note B_, 4
 	octave 4
-	note E_, 4
-	volume_envelope 11, 3
-	note G#, 16
+	note E_, 8
+
 	sound_ret
 
 Sfx_KeyItem_Ch6:
 	toggle_sfx
+	vibrato 8, 2, 7
 	duty_cycle 2
+;; P2-1
 	note_type 6, 12, 1
 	octave 4
-	note E_, 4
 	note E_, 2
+	note E_, 1
+	note E_, 1
+	note_type 6, 12, 3
 	note E_, 2
-	note E_, 4
-	note G#, 4
-	volume_envelope 12, 3
-	note B_, 16
+	note G#, 2
+	note B_, 8
+
 	sound_ret
 
 Sfx_KeyItem_Ch7:
 	toggle_sfx
-	note_type 6, 2, 5
+	note_type 6, 1, 0
 	octave 4
-	note G#, 2
-	rest 2
-	note G#, 1
+	note B_, 1
 	rest 1
-	note G#, 1
+	note_type 3, 1, 0
+	note B_, 1
 	rest 1
-	note G#, 2
-	rest 2
-	note B_, 2
-	rest 2
+	note B_, 1
+	rest 1
+	note_type 6, 1, 0
+	note B_, 1
+	rest 1
 	octave 5
-	note E_, 8
-	volume_envelope 3, 5
-	note E_, 4
+	note E_, 1
+	rest 1
+	octave 4
+	note B_, 4
 	rest 4
 	sound_ret
 
@@ -693,148 +700,149 @@ Sfx_DexFanfare2049_Ch8:
 	sound_ret
 
 Sfx_Item:
-	channel_count 4
+	channel_count 3
 	channel 5, Sfx_Item_Ch5
 	channel 6, Sfx_Item_Ch6
 	channel 7, Sfx_Item_Ch7
-	channel 8, Sfx_Item_Ch8
+	;channel 8, Sfx_Item_Ch8
 
 Sfx_Item_Ch5:
 	toggle_sfx
-	tempo 108
+	tempo 256
 	volume 7, 7
-	vibrato 8, 2, 7
+
+	vibrato 6, 2, 6
 	duty_cycle 2
-	note_type 8, 11, 2
+;; P1-1
+	note_type 4, 11, 1
+	octave 3
+	note G#, 2
+	note G#, 2
+	note G#, 2
+;	note B_, 2;					b
+	note_type 12, 11, 3
 	octave 4
-	note C_, 6
-	note C_, 2
-	note F_, 2
-	note C_, 2
-	note G_, 4
-	note G_, 4
-	note G_, 4
-	note F_, 12
-	rest 12
+	note E_, 4
+
 	sound_ret
 
 Sfx_Item_Ch6:
 	toggle_sfx
 	vibrato 8, 2, 7
 	duty_cycle 2
-	note_type 8, 12, 3
+;; P2-1
+	note_type 4, 12, 1
 	octave 4
-	note A_, 6
-	note A_, 2
-	note A_, 2
-	note A_, 2
-	note A#, 4
-	note A#, 4
-	note A#, 4
-	note A_, 12
-	rest 12
+	note E_, 2
+	note E_, 2
+	note E_, 2
+;	note G#, 2;					g#
+	note_type 12, 12, 3
+	note B_, 4
+
 	sound_ret
 
 Sfx_Item_Ch7:
 	toggle_sfx
-	note_type 8, 2, 5
+	note_type 4, 1, 0
 	octave 4
-	note F_, 4
-	rest 2
-	note F_, 1
+	note B_, 1
 	rest 1
-	note F_, 1
+	note B_, 1
 	rest 1
-	note F_, 1
+	note B_, 1
 	rest 1
-	note D#, 2
+	note_type 12, 1, 0
+;	octave 5
+;	note E_, 1;				oct 3	e
+;	rest 1;					r
+	octave 4
+	note B_, 2
 	rest 2
-	note D#, 2
-	rest 2
-	note E_, 2
-	rest 2
-	note F_, 6
-	volume_envelope 3, 5
-	note F_, 4
-	rest 14
-	sound_ret
-
-Sfx_Item_Ch8:
-	toggle_sfx
-	sfx_toggle_noise 4
-	drum_speed 12
-	note C_, 16
-	rest 16
 	sound_ret
 
 Sfx_CaughtMon:
-	channel_count 4
+	channel_count 3
 	channel 5, Sfx_CaughtMon_Ch5
 	channel 6, Sfx_CaughtMon_Ch6
 	channel 7, Sfx_CaughtMon_Ch7
-	channel 8, Sfx_CaughtMon_Ch8
+	;channel 8, Sfx_CaughtMon_Ch8
 
 Sfx_CaughtMon_Ch5:
 	toggle_sfx
-	tempo 112
+	tempo 256
 	volume 7, 7
-	vibrato 8, 2, 7
+
 	duty_cycle 2
-	note_type 8, 11, 3
+
+	note_type 5, 11, 4
+;; P1-1
 	octave 4
-	note C_, 6
+	note D_, 4
+	note C_, 4
 	octave 3
-	note A_, 6
-	note F_, 12
-	volume_envelope 11, 1
+	note A_, 8
+;; P1-2
+	note_type 5, 11, 2
 	octave 4
 	note D#, 2
 	note D#, 2
-	note D#, 2
-	note D#, 2
-	note D#, 2
-	note G_, 2
-	volume_envelope 11, 3
-	note F_, 12
+	note D_, 2
+	note C_, 2
+	note C_, 2
+	octave 3
+	note A#, 2
+	note_type 5, 11, 4
+	octave 4
+	note C_, 8
+
 	sound_ret
 
 Sfx_CaughtMon_Ch6:
 	toggle_sfx
-	duty_cycle 2
 	vibrato 8, 2, 7
-	note_type 8, 12, 3
+	duty_cycle 2
+;; P2-1
+	note_type 5, 12, 5
 	octave 4
-	note A_, 6
-	note F_, 6
-	note C_, 12
-	volume_envelope 12, 1
+	note A_, 4
+	note F_, 4
+	note C_, 8
+;; P2-2
+	note_type 5, 12, 2
 	note A#, 2
 	note A#, 2
 	note A#, 2
 	note G_, 2
 	note G_, 2
 	note A#, 2
-	volume_envelope 12, 3
-	note A_, 12
+	note_type 5, 12, 4
+	note A_, 8
+
 	sound_ret
 
 Sfx_CaughtMon_Ch7:
 	toggle_sfx
-	note_type 8, 2, 5
-	octave 3
-	note C_, 12
-	note C_, 6
-	octave 2
-	note A_, 2
-	octave 3
-	note C_, 2
-	note F_, 2
-	note G_, 6
-	note A#, 6
-	note A_, 6
-	volume_envelope 3, 5
-	note A_, 3
-	rest 3
+	note_type 5, 1, 0
+	octave 5
+	note F_, 4
+	note D#, 4
+	note C_, 8
+;; P3-2
+	note D#, 1
+	rest 1
+	note D#, 1
+	rest 1
+	note E_, 1
+	rest 1
+	note F_, 1
+	rest 1
+	note F_, 1
+	rest 1
+	note G_, 1
+	rest 1
+	note A_, 8
+
 	sound_ret
 
 Sfx_CaughtMon_Ch8:

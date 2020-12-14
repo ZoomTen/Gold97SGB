@@ -296,7 +296,7 @@ Music_Route105_Ch2:
 	sound_loop 0, .mainloop
 
 Music_Route105_Ch3:
-	note_type 12, 2, 7
+	note_type 12, 1, 4
 	octave 2
 	note G_, 1
 	rest 5
@@ -577,7 +577,7 @@ Music_Route105_Ch3:
 	sound_loop 0, .mainloop
 
 Music_Route105_Ch4:
-	toggle_noise 3
+	toggle_noise 0
 	drum_speed 12
 	sound_call .sub1
 	sound_call .sub2
@@ -602,8 +602,8 @@ Music_Route105_Ch4:
 
 .sub1:
 	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 8, 2
+	drum_note 8, 2
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 2
@@ -613,8 +613,8 @@ Music_Route105_Ch4:
 
 .sub2:
 	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 8, 2
+	drum_note 8, 2
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 2
@@ -627,8 +627,8 @@ Music_Route105_Ch4:
 
 .sub3:
 	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 8, 2
+	drum_note 8, 2
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 2
@@ -639,20 +639,20 @@ Music_Route105_Ch4:
 
 .sub4:
 	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 8, 2
+	drum_note 8, 2
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 2
-	drum_note 7, 2
+	drum_note 8, 2
 	drum_note 3, 2
 	drum_note 3, 2
 	sound_ret
 
 .sub5:
 	drum_note 3, 2
-	drum_note 7, 2
-	drum_note 7, 2
+	drum_note 8, 2
+	drum_note 8, 2
 	drum_note 3, 1
 	drum_note 3, 1
 	drum_note 3, 2

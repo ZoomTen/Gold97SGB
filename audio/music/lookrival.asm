@@ -1,9 +1,8 @@
 Music_LookRival:
-	channel_count 4
+	channel_count 3
 	channel 1, Music_LookRival_Ch1
 	channel 2, Music_LookRival_Ch2
 	channel 3, Music_LookRival_Ch3
-	channel 4, Music_LookRival_Ch4
 
 Music_LookRival_Ch1:
 	tempo 112
@@ -204,7 +203,7 @@ Music_LookRival_Ch2:
 	sound_loop 0, .mainloop
 
 Music_LookRival_Ch3:
-	note_type 12, 2, 8
+	note_type 12, 1, 4
 	rest 2
 	octave 4
 	note C_, 2

@@ -690,7 +690,7 @@
 	const EVENT_3E4
 	const EVENT_3E5
 	const EVENT_3E6
-	const EVENT_3E7
+	const EVENT_IS_DEMO_MODE
 ; Trainer flags
 ; Swimmer F
 	const EVENT_BEAT_SWIMMERF_ELAINE

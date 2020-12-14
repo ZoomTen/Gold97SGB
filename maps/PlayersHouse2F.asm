@@ -120,6 +120,8 @@ PlayersHousePosterScript:
 	describedecoration DECODESC_POSTER
 
 PlayersHouseRadioScript:
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue .DemoRadio
 	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
 	iftrue .NormalRadio
 	opentext
@@ -135,8 +137,15 @@ PlayersHouseRadioScript:
 	writetext PlayersRadioText5
 	waitbutton
 	closetext
-	end	
-	
+	end
+
+.DemoRadio:
+	opentext
+	writetext PlayersRadioText1
+	waitbutton
+	closetext
+	end
+
 .NormalRadio2
 	jumpstd Radio1Script
 
@@ -151,6 +160,8 @@ PlayersHouseBookshelfScript:
 	jumpstd PictureBookshelfScript
 
 PlayersHousePCScript:
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue .PCDemo
 	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
 	iftrue .PlayersHousePC2
 	opentext
@@ -172,9 +183,16 @@ PlayersHousePCScript:
 	end
 
 .PlayersHousePC2
-	opentext
 	special PlayersHousePC
 	iftrue .Warp
+	closetext
+	end
+
+.PCDemo
+	opentext
+	playsound SFX_BOOT_PC
+	writetext PlayersPCJournalText
+	waitbutton
 	closetext
 	end
 
@@ -193,7 +211,33 @@ PlayersRadioText5:
 	text "Looks like it"
 	line "isn't on…"
 	done
-	
+
+PlayersPCJournalText:
+	text "<PLAYER> opened up"
+	line "the #MON"
+	cont "JOURNAL homepage."
+
+	para "… … …"
+
+	para "A new #MON has"
+	line "been discovered!"
+
+	para "Currently dubbed"
+	line "SKARMORY, it has"
+	para "wings as hard as"
+	line "steel."
+
+	para "It is classified"
+	line "as a FLYING type"
+	para "as well as the"
+	line "newly-formulated"
+	cont "STEEL type."
+
+	para "Further research"
+	line "is currently being"
+	cont "conducted."
+	done
+
 KenGreeting1:
 	text "KEN: Hey, bro!"
 	para "That shiny thing"

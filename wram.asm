@@ -2736,9 +2736,9 @@ wOTPartyDataEnd::
 ENDU
 
 wPokemonDataEnd::
-
 wGameDataEnd::
 
+wDemoMode:: db
 
 SECTION "Stack", WRAMX
 

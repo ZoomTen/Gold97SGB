@@ -6,6 +6,17 @@ NewGame:
 	call OakSpeech
 	call InitializeWorld
 
+	ld a, [wDemoMode]
+	and a
+	jr z, .no_demo
+	call InitializeDemoNames
+	ld hl, InitializeDemoVariables_Script
+	ld a, BANK(InitializeDemoVariables_Script)
+	call CallScript
+	farcall EnableScriptMode
+	farcall ScriptEvents
+.no_demo
+
 	ld a, SPAWN_HOME
 	ld [wDefaultSpawnpoint], a
 
@@ -183,11 +194,68 @@ InitializeMagikarpHouse:
 .Ralph:
 	db "RALPH@"
 
-InitializeNPCNames:
+InitializeDemoNames:
 	ld hl, .Rival
 	ld de, wRivalName
-	call .Copy
+	call InitializeNPCNames_cont.Copy
 
+	ld hl, .Player
+	ld de, wPlayerName
+	call InitializeNPCNames_cont.Copy
+	jr InitializeNPCNames_cont
+
+.Rival:	db "SILVER@"
+.Player: db "GOLD@"
+
+InitializeDemoVariables_Script:
+	; give pokemon
+	givepoke HAPPA, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX make this random
+
+	; clear players_house 2f scripts
+	setevent EVENT_ROUTE_102_SILVER
+	setmapscene PLAYERS_HOUSE_2F, SCENE_PLAYERS_HOUSE_2F_NOTHING
+	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
+	checkevent EVENT_TALKED_TO_KEN_AT_BEGINNING
+
+	; clear players house 1f scripts
+	setmapscene PLAYERS_HOUSE_1F, SCENE_FINISHED
+	setevent EVENT_PLAYERS_HOUSE_MOM_1
+	setevent EVENT_PLAYERS_HOUSE_MOM_2
+	setevent EVENT_TALKED_TO_MOM_AT_BEGINNING
+	setevent EVENT_BLUE_SILENT_TOWN
+	setevent EVENT_FIRST_TIME_BANKING_WITH_MOM
+	setevent EVENT_TALKED_TO_MOM_AFTER_GETTING_POKEDEX
+	setevent EVENT_GOT_A_POKEMON_FROM_OAK
+
+	; clear silent town scripts
+	setmapscene SILENT_TOWN, SCENE_SILENT_NOTHING
+	setevent EVENT_RIVAL_SILENT_TOWN
+	setevent EVENT_BLUE_OAK_LAB_FRONT_ROOM
+	setevent EVENT_DAISY_OAK_LAB_FRONT_ROOM
+	setevent EVENT_PAGOTA_GYM_FALKNER
+	setevent EVENT_OAK_OAK_LAB_FRONT_ROOM
+	setevent EVENT_RIVAL_OAK_LAB_FRONT_ROOM_2
+	setevent EVENT_BLUE_OAK_LAB_FRONT_ROOM_2
+	setmapscene RADIO_TOWER_6F, SCENE_RADIOTOWER6F_NOTHING; this makes it so the giovanni scene plays, was missed for a while
+	setmapscene OAK_LAB_FRONT_ROOM, SCENE_DEFAULT
+	setmapscene OAK_LAB_BACK_ROOM, SCENE_OAK2SLAB_AIDE_GIVES_POTION
+
+	; clear all trainers in silent hills
+	setevent EVENT_IS_DEMO_MODE
+
+	return
+.ot_name
+	db "GOLD@"
+.nickname
+	; XXX match the mon's actual name
+	db "FLOPPA@"
+
+InitializeNPCNames:
+	ld hl, InitializeNPCNames_cont.Rival
+	ld de, wRivalName
+	call InitializeNPCNames_cont.Copy
+
+InitializeNPCNames_cont:
 	ld hl, .Mom
 	ld de, wMomsName
 	call .Copy
@@ -494,6 +562,10 @@ OakSpeech:
 
 	ld de, MUSIC_ROUTE_105
 	call PlayMusic
+
+	ld a, [wDemoMode]
+	and a
+	ret nz
 
 	;call RotateFourPalettesRight
 	call RotateThreePalettesRight
@@ -974,7 +1046,7 @@ StartTitleScreen:
 	call GetSGBLayout
 	call UpdateTimePals
 	ld a, [wIntroSceneFrameCounter]
-	cp $5
+	cp $6
 	jr c, .ok
 	xor a
 .ok
@@ -994,6 +1066,7 @@ StartTitleScreen:
 	dw IntroSequence
 	dw IntroSequence
 	dw ResetClock
+	dw RunDemo
 
 INCLUDE "engine/movie/title.asm"
 
@@ -1004,6 +1077,47 @@ DeleteSaveData:
 ResetClock:
 	farcall _ResetClock
 	jp Init
+
+RunDemo:
+	call ClearTilemap
+	call LoadStandardFont
+	call LoadFontsExtra
+	ld de, MUSIC_MAIN_MENU
+	call PlayMusic
+	ld hl, .DemoAskText
+	call PrintText
+	ld hl, .NoYes_MenuHeader
+	call CopyMenuHeader
+	call VerticalMenu
+	jr c, .pressed_no
+	ld a, [wMenuCursorY]
+	cp 1
+	jr z, .pressed_no
+
+; yes
+	ld a, 1
+	ld [wDemoMode], a
+
+	jp NewGame
+
+.pressed_no
+	jp StartTitleScreen
+
+.DemoAskText:
+	text "Do you wish to run"
+	line "the SW'97 demo?"
+	done
+
+.NoYes_MenuHeader:
+	db 0 ; flags
+	menu_coords 14, 7, SCREEN_WIDTH - 1, TEXTBOX_Y - 1
+	dw .NoYes_MenuData
+	db 1 ; default option
+.NoYes_MenuData:
+	db STATICMENU_CURSOR | STATICMENU_NO_TOP_SPACING ; flags
+	db 2 ; items
+	db "NO@"
+	db "YES@"
 
 Copyright:
 	call ClearTilemap

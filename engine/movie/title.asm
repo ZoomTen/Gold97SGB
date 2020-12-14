@@ -78,6 +78,7 @@ InitTitleScreen:
 	ld [hli], a ; wIntroSceneFrameCounter
 	ld [hli], a ; wTitleScreenTimer
 	ld [hl], a  ; wTitleScreenTimer + 1
+	ld [wDemoMode], a
 
 ; load 6 flying objects on the screen
 	ld hl, .fire_starting_positions
@@ -463,6 +464,12 @@ TitleScreenMain:
 	ld a, [hl]
 	and START | A_BUTTON
 	jr nz, .incave
+
+; Press Select + Right to start the demo
+	ld a, [hl]
+	and SELECT + D_RIGHT
+	cp  SELECT + D_RIGHT
+	jr  z, .prompt_demo
 	ret
 
 .incave
@@ -479,6 +486,16 @@ TitleScreenMain:
 	ld hl, wJumptableIndex
 	set 7, [hl]
 	ret
+
+.prompt_demo
+	ld a, 5
+	ld [wIntroSceneFrameCounter], a
+
+; Return to the intro sequence.
+	ld hl, wJumptableIndex
+	set 7, [hl]
+	ret
+
 
 .end
 ; Next scene

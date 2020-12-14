@@ -282,6 +282,7 @@ TitleScreenFlash:
 	jr z, .not_cgb
 	ld a, TITLE_BGP_FINAL
 	call DmgToCgbBGPals
+
 	jr .skip
 .not_cgb
 	ld a, TITLE_BGP_FINAL
@@ -328,14 +329,29 @@ TitleScreenCopyright:
 	ret nz
 
 ; Draw copyright text
-	hlcoord 3, $11
-	ld d, TITLE_TILE_COPYRIGHT
-	ld b, 1
-	ld c, TITLE_SIZE_COPYRIGHT
-	call DrawTitleGraphic
+	hlcoord 2, $11
+	;ld d, TITLE_TILE_COPYRIGHT
+	;ld b, 1
+	;ld c, TITLE_SIZE_COPYRIGHT
+	;call DrawTitleGraphic
+	ld de, .text
 
+.loop_t
+	ld a, [de]
+	cp "@"
+	jr z, .next
+	ld [hli], a
+	inc de
+	jr .loop_t
+
+.next
 	ld de, 20
 	jp TitleScreenSetTimerNextScene
+
+.text
+	db $0E, $0F, $55, $0F, $10, $0F, $11
+	db $12, $13, $14, $15, $16, $17, $18, $19, $1A
+	db "@"
 
 TitleScreenHooh:
 	call TitleScreenRunTimer

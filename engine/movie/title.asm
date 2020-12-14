@@ -1,7 +1,7 @@
 TITLE_BGP_INITIAL equ %00101010
 TITLE_BGP_FINAL   equ %11011000
 
-TITLE_SCX_INITIAL equ 152
+TITLE_SCX_INITIAL equ 150
 
 TITLE_TILE_BORDER_UP   equ $1B
 TITLE_TILE_BORDER_DOWN equ $1C
@@ -143,12 +143,12 @@ FillTitleScreenPals:
 
 LoadTitleScreenTilemap:
 ; Draw Pokemon logo
-	hlcoord 0, 0
+	hlcoord 0, 1
 	lb bc, 7, 20
 	lb de, $80, 20
 	call DrawTitleGraphic
 ; ...except game title
-	hlcoord 6, 6
+	hlcoord 6, 7
 	ld bc, 9
 	ld a, $80
 	call ByteFill
@@ -231,6 +231,7 @@ TitleScreenScrollIn:
 	ret nc
 	xor a
 	ldh [hSCX], a
+
 	ld de, 20
 	jp TitleScreenSetTimerNextScene
 
@@ -313,7 +314,7 @@ TitleScreenGameTitle:
 	ret nz
 
 ; Draw game title
-	hlcoord 6, 6
+	hlcoord 6, 7
 	ld d, TITLE_TILE_GAMETITLE
 	ld b, 1
 	ld c, TITLE_SIZE_GAMETITLE

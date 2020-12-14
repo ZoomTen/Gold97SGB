@@ -10,6 +10,8 @@ SilentPokecenter1F_MapScripts:
 	db 0 ; callbacks
 
 SilentPokecenter1FNurseScript:
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue  .Demo
 	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
 	iffalse .NoPokemonScript
 	jumpstd PokecenterNurseScript
@@ -17,6 +19,13 @@ SilentPokecenter1FNurseScript:
 .NoPokemonScript
 	opentext
 	writetext NoPokemonText
+	waitbutton
+	closetext
+	end
+
+.Demo
+	opentext
+	writetext PokecenterAdjustedText
 	waitbutton
 	closetext
 	end
@@ -61,7 +70,16 @@ NoPokemonText:
 	para "you need at least"
 	line "one #MON."
 	done
-	
+
+PokecenterAdjustedText:
+	text "We're sorry for"
+	line "the inconvenience,"
+	para "but this #MON"
+	line "CENTER is under"
+	para "repairs at the"
+	line "moment."
+	done
+
 SilentPokecenterMonText:
 	text "HOUNDOOM:"
 	line "GRUFFF!"

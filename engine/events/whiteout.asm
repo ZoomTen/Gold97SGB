@@ -9,6 +9,10 @@ Script_OverworldWhiteout::
 Script_Whiteout:
 	writetext .WhitedOutText
 	waitbutton
+
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue  .restart_whole_game
+
 	special FadeOutPalettes
 	pause 40
 	special HealParty
@@ -20,6 +24,15 @@ Script_Whiteout:
 	special WarpToSpawnPoint
 	newloadmap MAPSETUP_WARP
 	endall
+
+.restart_whole_game	; recipe for disaster?
+	musicfadeout MUSIC_NONE, 10
+	special FadeOutPalettes
+	pause 40
+	callasm .init
+
+.init
+	jp Init
 
 .bug_contest
 	jumpstd BugContestResultsWarpScript

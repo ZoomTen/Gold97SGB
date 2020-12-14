@@ -326,6 +326,11 @@ endr
 	ld a, [wLinkMode]
 	and a
 	jr nz, .no_save
+
+	ld a, [wDemoMode]
+	and a
+	jr nz, .no_save
+
 	ld hl, wStatusFlags2
 	bit STATUSFLAGS2_BUG_CONTEST_TIMER_F, [hl]
 	ld a, STARTMENUITEM_QUIT

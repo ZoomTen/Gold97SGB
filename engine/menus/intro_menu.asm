@@ -208,6 +208,8 @@ InitializeDemoNames:
 .Player: db "GOLD@"
 
 InitializeDemoVariables_Script:
+	; give dex
+	setflag ENGINE_POKEDEX
 	; give pokemon
 	givepoke HAPPA, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX make this random
 

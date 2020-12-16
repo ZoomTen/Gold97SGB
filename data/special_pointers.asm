@@ -131,4 +131,4 @@ SpecialsPointers::
 	add_special GiveOddEgg
 	add_special GiveDratini
 
-
+	add_special FadeOutPalettes_Warp

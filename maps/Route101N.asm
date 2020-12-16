@@ -87,13 +87,21 @@ SilverAtTheGateScript:
 	writetext SilverAtTheGateText
 	waitbutton
 	closetext
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue .cut_game_short
 	applymovement ROUTE101N_SILVER, SilverGoesThroughGateMovement
 	playsound SFX_ENTER_DOOR
 	disappear ROUTE101N_SILVER
 	setevent EVENT_SILVER_AT_ROUTE_101_GATE
 	setscene SCENE_ROUTE_101N_AFTER_SILVER
 	end
-	
+.cut_game_short
+	musicfadeout MUSIC_NONE, 16
+	pause 10
+	special FadeOutPalettes_Warp	; slowly fade out to black
+	pause 70
+	callasm Init	; this should reset the entire game.... right?
+
 SilverGoesThroughGateMovement:
 	step UP
 	step_end

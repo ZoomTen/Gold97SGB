@@ -7,6 +7,92 @@
 ;4
 ;1
 
+DemoGrassWildMons:
+	map_id ROUTE_101
+	db 8 percent, 8 percent, 8 percent ; encounter rates: morn/day/nite
+	; morn
+	db 7, SUNFLORA
+	db 3, SUNFLORA
+	db 5, SUNFLORA
+	db 5, PIKACHU
+	db 5, PIDGEY
+	db 5, PIDGEY
+	db 5, PIDGEY
+	; day
+	db 4, RATTATA
+	db 6, GIRAFARIG
+	db 4, GIRAFARIG
+	db 4, HOPPIP
+	db 4, PIDGEY
+	db 8, RATTATA
+	db 4, PIDGEY
+	; nite
+	db 7, RATTATA
+	db 5, RATTATA
+	db 5, RATTATA
+	db 7, RATTATA
+	db 8, RATTATA
+	db 5, PIKACHU
+	db 6, RATTATA
+
+	map_id ROUTE_101N
+	db 8 percent, 8 percent, 8 percent ; encounter rates: morn/day/nite
+	; morn
+	db 6, SUNFLORA
+	db 6, SUNFLORA
+	db 6, SUNFLORA
+	db 5, PIKACHU
+	db 4, EKANS
+	db 5, RATTATA
+	db 5, RATTATA
+	; day
+	db 5, PIDGEY
+	db 7, SKARMORY
+	db 5, RATTATA
+	db 4, PIDGEY
+	db 7, RATTATA
+	db 4, PIDGEY
+	db 4, PIDGEY
+	; nite
+	db 7, RATTATA
+	db 6, EKANS
+	db 7, EKANS
+	db 8, RATTATA
+	db 5, PIKACHU
+	db 5, PIKACHU
+	db 5, PIKACHU
+
+
+	map_id SILENT_HILLS
+	db 8 percent, 8 percent, 8 percent ; encounter rates: morn/day/nite
+	; morn
+	db 7, LEDYBA
+	db 7, LEDYBA
+	db 5, METAPOD
+	db 5, PIKACHU
+	db 7, PIDGEY
+	db 5, PIDGEY
+	db 5, PIDGEY
+	; day
+	db 6, PIDGEY
+	db 4, CATERPIE
+	db 6, CATERPIE
+	db 6, HOPPIP
+	db 5, CATERPIE
+	db 8, LEDYBA
+	db 4, CATERPIE
+	; nite
+	db 4, METAPOD
+	db 6, RATTATA
+	db 6, CATERPIE
+	db 6, LEDYBA
+	db 5, METAPOD
+	db 5, PIKACHU
+	db 5, PIKACHU
+
+	db -1 ; end
+
+
 NihonGrassWildMons:
 
 	map_id ROUTE_101

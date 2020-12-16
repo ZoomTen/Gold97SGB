@@ -403,7 +403,14 @@ _GrassWildmonLookup:
 	ld bc, GRASS_WILDDATA_LENGTH
 	call _SwarmWildmonCheck
 	ret c
+	ld a, [wDemoMode]
+	and a
+	jr z, .nodemo
+	ld hl, DemoGrassWildMons
+	jr .check
+.nodemo
 	ld hl, NihonGrassWildMons
+.check
 	ld de, SWIslandsGrassWildMons
 	call _NihonWildmonCheck
 	ld bc, GRASS_WILDDATA_LENGTH

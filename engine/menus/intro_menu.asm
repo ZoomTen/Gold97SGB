@@ -229,8 +229,23 @@ InitializeDemoVariables_Script:
 	setflag ENGINE_POKEGEAR
 
 	; give pokemon
-	givepoke HAPPA, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX make this random
+	random 3
+	ifequal 0, .flambear
+	ifequal 1, .cruize
 
+.chikorita
+	givepoke HAPPA, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX OT should be player
+	sjump .setup_items
+
+.flambear
+	givepoke FLAMBEAR, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX OT should be player
+	sjump .setup_items
+
+.cruize
+	givepoke CRUISEAL, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX OT should be player
+	sjump .setup_items
+
+.setup_items
 	; setup item stack
 	giveitem POKE_BALL, 5
 	giveitem POTION,   10

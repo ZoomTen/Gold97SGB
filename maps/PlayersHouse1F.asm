@@ -135,6 +135,8 @@ PlayersHouse1FReceiveItemStd:
 
 MomScript:
 	faceplayer
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue .demo
 	setevent EVENT_TEMPORARY_UNTIL_MAP_RELOAD_2
 	checkscene
 	iffalse MeetMomTalkedScript ; SCENE_DEFAULT
@@ -148,6 +150,13 @@ MomScript:
 	;checkevent EVENT_GOT_A_POKEMON_FROM_OAK
 	;iftrue .GotAPokemon
 	writetext HurryUpOak2IsWaitingText
+	waitbutton
+	closetext
+	end
+
+.demo
+	opentext
+	writetext MomDemoText
 	waitbutton
 	closetext
 	end
@@ -219,6 +228,19 @@ GearIsActiveText2:
 	line "is now set up!"
 	done
 
+MomDemoText:
+	text "MOM: Oh, you were"
+	line "asked by PROF.OAK"
+	para "to help make a new"
+	line "#DEX?"
+
+	para "That's wonderful!"
+	line "I may not know too"
+	para "much about #-"
+	line "MON, but I'll be"
+	cont "rooting for you!"
+	done
+
 FinalMomText:
 	;text "That's right,"
 	;line "<RIVAL> is"
@@ -236,6 +258,7 @@ FinalMomText:
 	para "you'll bump into"
 	line "him soon."
 	done
+
 
 Oak2sLookingForYouText:
 	text "Oh, <PLAYER>…!"

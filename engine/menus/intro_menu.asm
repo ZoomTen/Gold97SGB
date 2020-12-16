@@ -9,6 +9,17 @@ NewGame:
 	ld a, [wDemoMode]
 	and a
 	jr z, .no_demo
+
+;; Set RTC test XXXXXXXXXXX
+;	xor a
+;	ld [hRTCSeconds], a
+;	ld a, 13
+;	ld [hRTCHours], a
+;	ld a, 15
+;	ld [hRTCMinutes], a
+;	call SetClock
+;; XXXXXXXXXXXXXXXXXXXXXXX
+
 	call InitializeDemoNames
 	ld hl, InitializeDemoVariables_Script
 	ld a, BANK(InitializeDemoVariables_Script)
@@ -210,6 +221,8 @@ InitializeDemoNames:
 InitializeDemoVariables_Script:
 	; give dex
 	setflag ENGINE_POKEDEX
+	setflag ENGINE_POKEGEAR
+
 	; give pokemon
 	givepoke HAPPA, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX make this random
 
@@ -228,8 +241,8 @@ InitializeDemoVariables_Script:
 
 	; clear players house 1f scripts
 	setmapscene PLAYERS_HOUSE_1F, SCENE_FINISHED
-	setevent EVENT_PLAYERS_HOUSE_MOM_1
-	setevent EVENT_PLAYERS_HOUSE_MOM_2
+	;setevent EVENT_PLAYERS_HOUSE_MOM_1
+	;setevent EVENT_PLAYERS_HOUSE_MOM_2
 	setevent EVENT_TALKED_TO_MOM_AT_BEGINNING
 	setevent EVENT_BLUE_SILENT_TOWN
 	setevent EVENT_FIRST_TIME_BANKING_WITH_MOM
@@ -237,7 +250,7 @@ InitializeDemoVariables_Script:
 	setevent EVENT_GOT_A_POKEMON_FROM_OAK
 
 	; clear silent town scripts
-	setmapscene SILENT_TOWN, SCENE_SILENT_NOTHING
+	setmapscene SILENT_TOWN, SCENE_DEFAULT
 	setevent EVENT_RIVAL_SILENT_TOWN
 	setevent EVENT_BLUE_OAK_LAB_FRONT_ROOM
 	setevent EVENT_DAISY_OAK_LAB_FRONT_ROOM

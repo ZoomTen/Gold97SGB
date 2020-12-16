@@ -48,6 +48,8 @@ SilentTownPokecenterSign:
 	jumpstd PokecenterSignScript
 	
 SilentTown_RivalGreets:
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue .skip_entirely
 	applymovement SILENTTOWN_SILVER, Movement_SilverComesFromTheShadows_NBT
 	applymovement PLAYER, Movement_PlayerTurnsHead
 	special FadeOutMusic
@@ -67,6 +69,7 @@ SilentTown_RivalGreets:
 	special FadeOutMusic
 	pause 15
 	special RestartMapMusic
+.skip_entirely
 	setevent EVENT_RIVAL_SILENT_TOWN
 	setevent EVENT_BLUE_OAK_LAB_FRONT_ROOM
 	setevent EVENT_DAISY_OAK_LAB_FRONT_ROOM
@@ -76,6 +79,32 @@ SilentTown_RivalGreets:
 	setevent EVENT_BLUE_OAK_LAB_FRONT_ROOM_2
 	setmapscene RADIO_TOWER_6F, SCENE_RADIOTOWER6F_NOTHING; this makes it so the giovanni scene plays, was missed for a while
 	end
+
+SilentTown_OakLockout:	; force the player out of oak's lab in demo mode
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue .lockout ;iffalse .skip
+;	checkcode VAR_FACING
+;	ifequal UP, .lockout
+;.skip
+	end
+.lockout
+	applymovement PLAYER, .face_up
+	opentext
+	writetext .LockedText
+	waitbutton
+	closetext
+	applymovement PLAYER, .slowly_walk_away
+	end
+.face_up
+	turn_head UP
+	step_end
+.slowly_walk_away
+	slow_step DOWN
+	step_end
+.LockedText
+	text "The door seems to"
+	line "be locked…"
+	done
 
 SilentTown_TeacherStopsYouScene2:
 	playmusic MUSIC_SHOW_ME_AROUND
@@ -251,7 +280,11 @@ SilentTownPlayersHouseSign:
 	jumptext SilentTownPlayersHouseSignText
 
 SilentTownOakLabBackRoomSign:
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue .demo
 	jumptext SilentTownOakLabBackRoomSignText
+.demo
+	jumptext SilentTownLabForRentText
 
 SilentTownRivalsHouseSign:
 	jumptext SilentTownRivalsHouseSignText
@@ -471,6 +504,10 @@ SilentTownOakLabBackRoomSignText:
 	text "OAK #MON LAB"
 	done
 
+SilentTownLabForRentText:
+	text "BUILDING FOR RENT"
+	done
+
 SilentTownRivalsHouseSignText:
 	text "<RIVAL>'s House"
 	done
@@ -487,10 +524,12 @@ SilentTown_MapEvents:
 	warp_event  9,  9, AMAMI_POKECENTER_1F, 1
 
 
-	db 3 ; coord events
+	db 5 ; coord events
 	coord_event  1,  8, SCENE_TEACHER_STOPS, SilentTown_TeacherStopsYouScene1
 	coord_event  1,  9, SCENE_TEACHER_STOPS, SilentTown_TeacherStopsYouScene2
 	coord_event  5,  5, SCENE_DEFAULT, SilentTown_RivalGreets
+	coord_event 14, 12, SCENE_DEFAULT, SilentTown_OakLockout
+	coord_event 15, 12, SCENE_DEFAULT, SilentTown_OakLockout
 
 	db 5 ; bg events
 	bg_event 16,  5, BGEVENT_READ, SilentTownSign

@@ -215,7 +215,11 @@ SilentTownTeacherScript:
 	end
 
 SilentTownFisherScript:
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue .demo
 	jumptextfaceplayer Text_Oak2DiscoveredNewMon
+.demo
+	jumptextfaceplayer Text_WhoDoesntLike
 
 SilentTownSilverScript:
 	opentext
@@ -470,6 +474,13 @@ Text_CallMomOnGear:
 
 	para "let her know how"
 	line "you're doing."
+	done
+
+Text_WhoDoesntLike:
+	text "Is there anyone"
+	line "in the world who"
+	para "doesn't like"
+	line "#MON?"
 	done
 
 Text_Oak2DiscoveredNewMon:

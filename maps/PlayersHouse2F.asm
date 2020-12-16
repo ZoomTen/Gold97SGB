@@ -38,6 +38,7 @@ MeetKenScript:
 	turnobject PLAYER, LEFT
 	turnobject PLAYERSHOUSE2F_KEN, RIGHT
 PlayersHouse2F_Ken:
+	setevent EVENT_NOT_DEMO_MODE
 	faceplayer
 	opentext
 	checkevent EVENT_TALKED_TO_MOM_AT_BEGINNING

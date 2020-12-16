@@ -10,8 +10,8 @@ SilentNorth_MapEvents:
 	db 0, 0 ; filler
 
 	db 2 ; warp events
-	warp_event  9,  7, VICTORY_ROAD_GATE, 1
-	warp_event 11,  7, TEKNOS_AQUARIUM_1F, 1
+	warp_event  9,  9, VICTORY_ROAD_GATE, 1
+	warp_event 11,  9, TEKNOS_AQUARIUM_1F, 1
 
 	db 0 ; coord events
 

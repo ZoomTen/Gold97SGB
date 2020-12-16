@@ -1273,6 +1273,41 @@ _OakText7::
 	line "later!"
 	done
 
+_OakTextDemo::
+	text "Welcome to the"
+	line "world of #MON!"
+
+	para "As you may know,"
+	line "I am PROF. OAK!"
+
+	para "The reason I have"
+	line "brought you here"
+	cont "today is because"
+	cont "I need your help"
+	cont "putting together"
+	cont "a new #DEX!"
+
+	para "Naturally, I have"
+	line "prepared a #MON"
+	cont "and a PACK."
+
+	para "In your PACK you"
+	line "will find POTIONS"
+	cont "and # BALLS,"
+	cont "so there is no"
+	cont "need to worry."
+
+	para "Your RIVAL has"
+	line "already gone"
+	cont "ahead."
+
+	para "Hang in there!"
+
+	para "I'm counting on"
+	line "you!"
+
+	prompt
+
 _ClockTimeMayBeWrongText::
 	text "The clock's time"
 	line "may be wrong."

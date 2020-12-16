@@ -202,7 +202,7 @@ InitializeDemoNames:
 	ld hl, .Player
 	ld de, wPlayerName
 	call InitializeNPCNames_cont.Copy
-	jr InitializeNPCNames_cont
+	jp InitializeNPCNames_cont
 
 .Rival:	db "SILVER@"
 .Player: db "GOLD@"
@@ -212,6 +212,13 @@ InitializeDemoVariables_Script:
 	setflag ENGINE_POKEDEX
 	; give pokemon
 	givepoke HAPPA, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX make this random
+
+	; setup item stack
+	giveitem POKE_BALL, 5
+	giveitem POTION,   10
+	giveitem FULL_HEAL, 10
+	giveitem AWAKENING , 1  ; shigekidama
+	giveitem FOCUS_BAND, 1  ; kiaidama
 
 	; clear players_house 2f scripts
 	setevent EVENT_ROUTE_102_SILVER
@@ -565,10 +572,6 @@ OakSpeech:
 	ld de, MUSIC_ROUTE_105
 	call PlayMusic
 
-	ld a, [wDemoMode]
-	and a
-	ret nz
-
 	;call RotateFourPalettesRight
 	call RotateThreePalettesRight
 	xor a
@@ -580,6 +583,10 @@ OakSpeech:
 	ld b, SCGB_TRAINER_OR_MON_FRONTPIC_PALS
 	call GetSGBLayout
 	call Intro_RotatePalettesLeftFrontpic
+
+	ld a, [wDemoMode]
+	and a
+	jp nz, .demo
 
 	ld hl, OakText1
 	call PrintText
@@ -685,6 +692,23 @@ OakSpeech:
 	ld hl, OakText7
 	call PrintText
 	ret
+
+.demo
+	ld hl, OakTextDemo
+	call PrintText
+	call RotateThreePalettesRight	; fade out
+	call ClearTilemap
+	xor a
+	ld [wCurPartySpecies], a
+	ld a, CAL
+	ld [wTrainerClass], a
+	call Intro_PrepTrainerPic
+	call Intro_RotatePalettesLeftFrontpic	; fade in
+	ret
+
+OakTextDemo:
+	text_far _OakTextDemo
+	text_end
 
 OakText1:
 	text_far _OakText1

@@ -226,7 +226,6 @@ ClearDemoVariables_Script:
 InitializeDemoVariables_Script:
 	; give dex
 	setflag ENGINE_POKEDEX
-	setflag ENGINE_POKEGEAR
 
 	; give pokemon
 	random 3

@@ -290,12 +290,8 @@ SilentTownOakLabBackRoomSign:
 	jumptext SilentTownLabForRentText
 
 SilentTownCannotPassScript:
-	faceplayer
-	opentext
-	writetext .youShallNotPass
-	waitbutton
-	closetext
-	end
+	jumptextfaceplayer .youShallNotPass
+
 .youShallNotPass
 	text "The path is"
 	line "currently off-"

@@ -234,15 +234,15 @@ InitializeDemoVariables_Script:
 	ifequal 1, .cruize
 
 .chikorita
-	givepoke HAPPA, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX OT should be player
+	givepoke HAPPA, 8, BERRY, TRUE, wStringBuffer1, wPlayerName ; XXX OT should be player
 	sjump .setup_items
 
 .flambear
-	givepoke FLAMBEAR, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX OT should be player
+	givepoke FLAMBEAR, 8, BERRY, TRUE, wStringBuffer1, wPlayerName ; XXX OT should be player
 	sjump .setup_items
 
 .cruize
-	givepoke CRUISEAL, 8, BERRY, POKEMON_PROF, .nickname, .ot_name ; XXX OT should be player
+	givepoke CRUISEAL, 8, BERRY, TRUE, wStringBuffer1, wPlayerName ; XXX OT should be player
 	sjump .setup_items
 
 .setup_items
@@ -286,11 +286,6 @@ InitializeDemoVariables_Script:
 	clearevent EVENT_NOT_DEMO_MODE
 
 	return
-.ot_name
-	db "GOLD@"
-.nickname
-	; XXX match the mon's actual name
-	db "FLOPPA@"
 
 InitializeNPCNames:
 	ld hl, InitializeNPCNames_cont.Rival

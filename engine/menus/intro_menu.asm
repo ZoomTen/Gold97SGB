@@ -26,8 +26,8 @@ NewGame:
 	call CallScript
 	farcall EnableScriptMode
 	farcall ScriptEvents
-.no_demo
 
+.no_demo
 	ld a, SPAWN_HOME
 	ld [wDefaultSpawnpoint], a
 
@@ -218,6 +218,11 @@ InitializeDemoNames:
 .Rival:	db "SILVER@"
 .Player: db "GOLD@"
 
+ClearDemoVariables_Script:
+	clearevent EVENT_IS_DEMO_MODE
+	setevent   EVENT_NOT_DEMO_MODE
+	return
+
 InitializeDemoVariables_Script:
 	; give dex
 	setflag ENGINE_POKEDEX
@@ -262,8 +267,8 @@ InitializeDemoVariables_Script:
 	setmapscene OAK_LAB_FRONT_ROOM, SCENE_DEFAULT
 	setmapscene OAK_LAB_BACK_ROOM, SCENE_OAK2SLAB_AIDE_GIVES_POTION
 
-	; clear all trainers in silent hills
-	setevent EVENT_IS_DEMO_MODE
+	setevent   EVENT_IS_DEMO_MODE
+	clearevent EVENT_NOT_DEMO_MODE
 
 	return
 .ot_name
@@ -424,6 +429,17 @@ Continue_CheckRTC_RestartClock:
 	ret
 
 FinishContinueFunction:
+	ld a, [wDemoMode]
+	and a
+	jr nz, .loop
+
+; ensure demo events are cleaned up when we're not in it
+	ld hl, ClearDemoVariables_Script
+	ld a, BANK(ClearDemoVariables_Script)
+	call CallScript
+	farcall EnableScriptMode
+	farcall ScriptEvents
+
 .loop
 	xor a
 	ld [wDontPlayMapMusicOnReload], a

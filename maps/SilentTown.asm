@@ -33,8 +33,6 @@ SilentTown_MapScripts:
 	
 .FlyPointAndFixSaves:
 	setflag ENGINE_FLYPOINT_SILENT
-	clearevent EVENT_IS_DEMO_MODE
-	setevent   EVENT_NOT_DEMO_MODE
 	clearevent EVENT_FIRST_TIME_BANKING_WITH_MOM
 	checkevent EVENT_GOT_A_POKEMON_FROM_OAK
 	iffalse .DontFixSaves

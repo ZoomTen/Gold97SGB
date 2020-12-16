@@ -184,6 +184,7 @@ PlayersHousePCScript:
 	end
 
 .PlayersHousePC2
+	opentext
 	special PlayersHousePC
 	iftrue .Warp
 	closetext

@@ -78,6 +78,9 @@ PokecenterAdjustedText:
 	line "CENTER is under"
 	para "repairs at the"
 	line "moment."
+
+	para "Be careful out"
+	line "there!"
 	done
 
 SilentPokecenterMonText:

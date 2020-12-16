@@ -183,6 +183,8 @@ SilentTownBlueScript:
 SilentTownTeacherScript:
 	faceplayer
 	opentext
+	checkevent EVENT_IS_DEMO_MODE
+	iftrue .MonIsAdorable
 	checkevent EVENT_TALKED_TO_MOM_AFTER_GETTING_POKEDEX
 	iftrue .CallMom
 	checkevent EVENT_GAVE_MYSTERY_EGG_TO_OAK2

@@ -22,11 +22,11 @@ MewSpot2Script:
 	cry MEW
 	waitbutton
 	closetext
-	special FadeBlackQuickly
+	special FadeOutPalettes
 	playsound SFX_WARP_TO
 	pause 10
 	disappear MEW_SPOT_2
-	special FadeInQuickly
+	special FadeInPalettes
 	setevent EVENT_MEW_SPOT_2_FOUND
 	setevent EVENT_SLOWKING_HINT_3
 	appear MEW_SPOT_3
@@ -39,11 +39,11 @@ MewSpot3Script:
 	cry MEW
 	waitbutton
 	closetext
-	special FadeBlackQuickly
+	special FadeOutPalettes
 	playsound SFX_WARP_TO
 	pause 10
 	disappear MEW_SPOT_3
-	special FadeInQuickly
+	special FadeInPalettes
 	setevent EVENT_MEW_SPOT_3_FOUND
 	setevent EVENT_SLOWKING_HINT_4
 	appear MEW_SPOT_4
@@ -56,11 +56,11 @@ MewSpot4Script:
 	cry MEW
 	waitbutton
 	closetext
-	special FadeBlackQuickly
+	special FadeOutPalettes
 	playsound SFX_WARP_TO
 	pause 10
 	disappear MEW_SPOT_4
-	special FadeInQuickly
+	special FadeInPalettes
 	setevent EVENT_MEW_SPOT_4_FOUND
 	setevent EVENT_SLOWKING_HINT_5
 	clearevent EVENT_MEW_SPOT_5_FOUND
@@ -72,11 +72,11 @@ MewSpot6Script:
 	cry MEW
 	waitbutton
 	closetext
-	special FadeBlackQuickly
+	special FadeOutPalettes
 	playsound SFX_WARP_TO
 	pause 10
 	disappear MEW_SPOT_6
-	special FadeInQuickly
+	special FadeInPalettes
 	setevent EVENT_MEW_SPOT_6_FOUND
 	setevent EVENT_SLOWKING_HINT_7
 	appear MEW_SPOT_7
@@ -89,11 +89,11 @@ MewSpot7Script:
 	cry MEW
 	waitbutton
 	closetext
-	special FadeBlackQuickly
+	special FadeOutPalettes
 	playsound SFX_WARP_TO
 	pause 10
 	disappear MEW_SPOT_7
-	special FadeInQuickly
+	special FadeInPalettes
 	setevent EVENT_MEW_SPOT_7_FOUND
 	setevent EVENT_SLOWKING_HINT_8
 	appear MEW_SPOT_8
@@ -248,11 +248,11 @@ TropicalIslandOutside_MapEvents:
 	db 0 ; bg events
 
 	db 7 ; object events
-	object_event 55, 15, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MewSpot2Script, EVENT_MEW_SPOT_2_FOUND
-	object_event 28, 20, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MewSpot3Script, EVENT_MEW_SPOT_3_FOUND
-	object_event  3, 22, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MewSpot4Script, EVENT_MEW_SPOT_4_FOUND
-	object_event 51, 34, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MewSpot6Script, EVENT_MEW_SPOT_6_FOUND
-	object_event 37,  7, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MewSpot7Script, EVENT_MEW_SPOT_7_FOUND
-	object_event 26,  5, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, MewSpot8Script, EVENT_MEW_SPOT_8_FOUND
-	object_event 51, 47, SPRITE_SLOWPOKE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, SlowkingScript, -1
+	object_event 55, 15, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, MewSpot2Script, EVENT_MEW_SPOT_2_FOUND
+	object_event 28, 20, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, MewSpot3Script, EVENT_MEW_SPOT_3_FOUND
+	object_event  3, 22, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, MewSpot4Script, EVENT_MEW_SPOT_4_FOUND
+	object_event 51, 34, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, MewSpot6Script, EVENT_MEW_SPOT_6_FOUND
+	object_event 37,  7, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, MewSpot7Script, EVENT_MEW_SPOT_7_FOUND
+	object_event 26,  5, SPRITE_JYNX, SPRITEMOVEDATA_POKEMON, 0, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, MewSpot8Script, EVENT_MEW_SPOT_8_FOUND
+	object_event 51, 47, SPRITE_SLOWPOKE, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_ORANGE, OBJECTTYPE_SCRIPT, 0, SlowkingScript, -1
 	

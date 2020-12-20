@@ -31,7 +31,7 @@ TrainerGruntM1:
 	clearflag ENGINE_ROCKETS_IN_SANSKRIT
 	checkevent EVENT_WISE_TRIOS_ROOM_WISE_TRIO_2
 	iffalse .AlreadyRescuedGirl
-	special FadeOutPalettes; shouldn't be here ever, mine is mandatory first now
+	special FadeBlackQuickly; shouldn't be here ever, mine is mandatory first now
 	special HealParty
 	pause 15
 	warp TEKNOS_CITY, 6, 28
@@ -51,7 +51,7 @@ TrainerGruntM1:
 	pause 30
 	applymovement PLAYER, PlayerInAquariumDummyMovement
 	clearevent EVENT_WHITNEY_BACK_IN_TEKNOS_GYM
-	special FadeOutPalettes
+	special FadeBlackQuickly
 	special HealParty
 	pause 15
 	warp TEKNOS_CITY, 6, 28
@@ -287,8 +287,8 @@ TeknosAquarium2F_MapEvents:
 	bg_event 11,  3, BGEVENT_READ, Aqua2FExhibit3Script
 
 	db 5 ; object events
-	object_event 14,  7, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 0, TrainerGruntM1, EVENT_ROCKETS_TAKE_OVER_AQUARIUM
-	object_event  5,  3, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, 0, OBJECTTYPE_TRAINER, 4, TrainerGruntM3, EVENT_ROCKETS_TAKE_OVER_AQUARIUM
-	object_event  7,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, AquaPokefanMScript, -1
+	object_event 14,  7, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_TRAINER, 0, TrainerGruntM1, EVENT_ROCKETS_TAKE_OVER_AQUARIUM
+	object_event  5,  3, SPRITE_ROCKET, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GRAY, OBJECTTYPE_TRAINER, 4, TrainerGruntM3, EVENT_ROCKETS_TAKE_OVER_AQUARIUM
+	object_event  7,  6, SPRITE_POKEFAN_M, SPRITEMOVEDATA_WALK_LEFT_RIGHT, 1, 0, -1, -1, PAL_NPC_YELLOW, OBJECTTYPE_SCRIPT, 0, AquaPokefanMScript, -1
 	object_event 10,  4, SPRITE_TEACHER, SPRITEMOVEDATA_STANDING_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, AquaPokefanFScript, -1
-	object_event 17, -4, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_RIGHT, 1, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_WHITNEY_AQUARIUM_2F
+	object_event 17, -4, SPRITE_WHITNEY, SPRITEMOVEDATA_STANDING_RIGHT, 1, 0, -1, -1, PAL_NPC_PINK, OBJECTTYPE_SCRIPT, 0, ObjectEvent, EVENT_WHITNEY_AQUARIUM_2F

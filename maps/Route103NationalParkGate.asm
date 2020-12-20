@@ -72,7 +72,7 @@ Route103NationalParkGate_MapScripts:
 	closetext
 	scall Route103NationalParkGate_EnterContest
 	playsound SFX_ENTER_DOOR
-	special FadeOutPalettes
+	special FadeBlackQuickly
 	waitsfx
 	warp NATIONAL_PARK_BUG_CONTEST, 10, 47
 	end
@@ -109,7 +109,7 @@ Route103NationalParkGate_OkayToProceed:
 	special GiveParkBalls
 	scall Route103NationalParkGate_EnterContest
 	playsound SFX_ENTER_DOOR
-	special FadeOutPalettes
+	special FadeBlackQuickly
 	waitsfx
 	special SelectRandomBugContestContestants
 	warp NATIONAL_PARK_BUG_CONTEST, 10, 47
@@ -448,5 +448,5 @@ Route103NationalParkGate_MapEvents:
 
 	db 3 ; object events
 	object_event  2,  1, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_DOWN, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route103OfficerScriptContest, EVENT_ROUTE_103_NATIONAL_PARK_GATE_OFFICER_CONTEST_DAY
-	object_event  6,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_RED, OBJECTTYPE_SCRIPT, 0, Route103NationalParkGateYoungsterScript, EVENT_ROUTE_103_NATIONAL_PARK_GATE_YOUNGSTER
+	object_event  6,  5, SPRITE_YOUNGSTER, SPRITEMOVEDATA_WANDER, 1, 1, -1, -1, PAL_NPC_ORANGE, OBJECTTYPE_SCRIPT, 0, Route103NationalParkGateYoungsterScript, EVENT_ROUTE_103_NATIONAL_PARK_GATE_YOUNGSTER
 	object_event  0,  3, SPRITE_OFFICER, SPRITEMOVEDATA_STANDING_RIGHT, 0, 0, -1, -1, PAL_NPC_GREEN, OBJECTTYPE_SCRIPT, 0, Route103NationalParkGateOfficerScript, EVENT_ROUTE_103_NATIONAL_PARK_GATE_OFFICER_NOT_CONTEST_DAY

@@ -122,7 +122,6 @@ INCLUDE "audio/music/credits.asm"
 INCLUDE "audio/music/silenttown.asm"
 INCLUDE "audio/music/profoakspokemontalk.asm"
 
-
 SECTION "Extra Songs 2", ROMX
 
 INCLUDE "audio/music/postcredits.asm"

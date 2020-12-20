@@ -935,6 +935,10 @@ ShrinkPlayer:
 
 	ld c, 3
 	call DelayFrames
+	
+	; reset palette
+	lb de, %11100000, %11100000
+	call DmgToCgbObjPals
 
 	call Intro_PlaceChrisSprite
 	call LoadFontsExtra
@@ -1062,7 +1066,7 @@ Intro_PlaceChrisSprite:
 	ld a, [de]
 	inc de
 	ld [hli], a ; tile id
-	xor a ; PAL_OW_RED
+	xor a ; PAL_OW_ORANGE
 	ld [hli], a ; attributes
 	dec c
 	jr nz, .loop

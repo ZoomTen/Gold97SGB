@@ -143,6 +143,14 @@ PlaceOptionsString:
 	add "1"
 	ld [hl], a
 
+	ld a, [hCGB]
+	and a
+	jr z, .PlaceExitAndPageIndicator
+
+	hlcoord 1, 13
+	ld de, .Page2_CGB_text
+	call PlaceString
+
 .PlaceExitAndPageIndicator:
 	hlcoord 2, 16
 	ld de, .ExitText
@@ -175,6 +183,9 @@ PlaceOptionsString:
 	db "MENU ACCOUNT      <LF>"
 	db "                  <LF>"
 	db " ON       OFF     <LF><LF>@"
+
+.Page2_CGB_text:
+	db "COLOR:  SGB   GBC @"
 
 .Page2_textframe_text: db "TEXT FRAME@"
 
@@ -232,6 +243,23 @@ endr
 	hlcoord 10, 11
 .account_ok
 	ld [hl], "▷"
+
+	ld a, [hCGB]
+	and a
+	jr z, .end_
+
+; place cgb color mode
+	ld a, [wOptions2]
+	bit COLOR_MODE, a
+	jr z, .sgb_color
+	hlcoord 14, 13
+	jr .color_ok
+.sgb_color
+	hlcoord 8, 13
+.color_ok
+	ld [hl], "▷"
+
+.end_
 	jp .ExitAndPage
 
 .PrinterPositions:
@@ -352,7 +380,7 @@ GetOptionPointer:
 	dw Options_Frame
 	dw Options_Print
 	dw Options_MenuAccount
-	dw Options_Skip
+	dw Options_Colors
 	dw Options_Cancel
 	dw Options_SwitchPage
 
@@ -713,7 +741,41 @@ UpdateFrame:
 	and a
 	ret
 
-Options_Skip:
+Options_Colors:
+	ld a, [hCGB]
+	and a
+	ret z
+
+	ld hl, wOptions2
+	ldh a, [hJoyPressed]
+	bit D_LEFT_F, a
+	jr nz, .LeftPressed
+	bit D_RIGHT_F, a
+	jr z, .NonePressed
+	bit COLOR_MODE, [hl]
+	jr nz, .ToggleSGB
+	jr .ToggleGBC
+.LeftPressed:
+	bit COLOR_MODE, [hl]
+	jr z, .ToggleGBC
+	jr .ToggleSGB
+.NonePressed:
+	bit COLOR_MODE, [hl]
+	jr nz, .ToggleGBC
+.ToggleSGB:
+	res COLOR_MODE, [hl]
+	hlcoord 8, 13
+	ld [hl], "▶"
+	hlcoord 14, 13
+	ld [hl], " "
+	jr .Display
+.ToggleGBC:
+	set COLOR_MODE, [hl]
+	hlcoord 14, 13
+	ld [hl], "▶"
+	hlcoord 8, 13
+	ld [hl], " "
+.Display:
 	and a
 	ret
 
@@ -783,6 +845,11 @@ OptionsControl:
 	and a
 	ret
 .Down:
+	ld a, [hCGB]
+	and a
+	ld a, [hl]
+	jr nz, .down_ok	; skip if not on CGB
+
 	ld a, [wOptionsPage]
 	and a
 	ld a, [hl] ; load the cursor position to a
@@ -803,6 +870,11 @@ OptionsControl:
 	scf
 	ret
 .Up:
+	ld a, [hCGB]
+	and a
+	ld a, [hl]
+	jr nz, .up_ok	; skip if not on CGB
+
 	ld a, [wOptionsPage]
 	and a
 	ld a, [hl]

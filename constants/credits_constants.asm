@@ -77,6 +77,14 @@
 	const TEXT_TRANSLATION
 	const PAAD_TESTING
 
+	const GOLD_97_CONTRIBUTORS
+	const LVL_3
+	const ZUMI
+	const TEMPO_QUILL
+	const PRET
+	const SW97_REFORGED_TEAM
+	const THANK_YOU
+
 ; CreditsScript indexes (see data/credits_script.asm)
 	const_def -7
 	const CREDITS_THEEND

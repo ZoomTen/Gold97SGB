@@ -76,3 +76,10 @@ CreditsStringsPointers:
 	dw Credits_UsCoordination
 	dw Credits_TextTranslation
 	dw Credits_PaadTesting
+	dw Credits_Gold97Contributors
+	dw Credits_Lvl3
+	dw Credits_Zumi
+	dw Credits_TempoQuill
+	dw Credits_Pret
+	dw Credits_SW97ReforgedTeam
+	dw Credits_ThankYou

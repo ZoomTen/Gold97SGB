@@ -157,7 +157,6 @@ Credits_Jumptable:
 	dw Credits_Next
 	dw Credits_Next
 	dw Credits_Next
-	dw Credits_Next
 	dw Credits_LoopBack
 
 Credits_Next:
@@ -202,7 +201,7 @@ Credits_LYOverride:
 	jr c, Credits_LYOverride
 	ld a, [wCreditsLYOverride]
 	inc a
-	inc a
+	;inc a
 	ld [wCreditsLYOverride], a
 	ld hl, wLYOverrides + $1f
 	call .Fill

@@ -387,11 +387,7 @@ TitleScreenTimer:
 
 ; Start a timer
 	ld hl, wTitleScreenTimer
-IF DEF(_GOLD)
-	ld de, 84 * 60 + 16
-ELIF DEF(_SILVER)
-	ld de 73 * 60 + 36
-ENDC
+	ld de, 60 * 47 + 31 ; 47.52 seconds
 	ld [hl], e
 	inc hl
 	ld [hl], d

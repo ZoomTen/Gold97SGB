@@ -29,7 +29,7 @@ SpriteAnimOAMData:
 	dbw $01, .OAMData_TradePoofBubble          ; SPRITE_ANIM_OAMSET_GS_INTRO_MED_FIREBALL
 	dbw $09, .OAMData_GSIntroBigFireball       ; SPRITE_ANIM_OAMSET_GS_INTRO_BIG_FIREBALL
 	dbw $10, .OAMData_GSIntroStarter           ; SPRITE_ANIM_OAMSET_GS_INTRO_HAPPA
-	dbw $29, .OAMData_GSIntroStarter           ; SPRITE_ANIM_OAMSET_GS_INTRO_FLAMBEAR
+	dbw $40, .OAMData_GSIntroStarter           ; SPRITE_ANIM_OAMSET_GS_INTRO_FLAMBEAR
 	dbw $42, .OAMData_GSIntroStarter           ; SPRITE_ANIM_OAMSET_GS_INTRO_CRUISEAL
 	dbw $78, .OAMData_GSTitleTrail             ; SPRITE_ANIM_OAMSET_GS_TITLE_TRAIL_1
 	dbw $7c, .OAMData_GSTitleTrail             ; SPRITE_ANIM_OAMSET_GS_TITLE_TRAIL_2
@@ -238,34 +238,6 @@ ENDC
 	dbsprite  1,  1,  0,  0, $33, 0
 
 .OAMData_GSIntroStarter:
-	db 25
-	dbsprite -3, -3,  4,  4, $00, 0
-	dbsprite -3, -2,  4,  4, $01, 0
-	dbsprite -3, -1,  4,  4, $02, 0
-	dbsprite -3,  0,  4,  4, $03, 0
-	dbsprite -3,  1,  4,  4, $04, 0
-	dbsprite -2, -3,  4,  4, $05, 0
-	dbsprite -2, -2,  4,  4, $06, 0
-	dbsprite -2, -1,  4,  4, $07, 0
-	dbsprite -2,  0,  4,  4, $08, 0
-	dbsprite -2,  1,  4,  4, $09, 0
-	dbsprite -1, -3,  4,  4, $0a, 0
-	dbsprite -1, -2,  4,  4, $0b, 0
-	dbsprite -1, -1,  4,  4, $0c, 0
-	dbsprite -1,  0,  4,  4, $0d, 0
-	dbsprite -1,  1,  4,  4, $0e, 0
-	dbsprite  0, -3,  4,  4, $0f, 0
-	dbsprite  0, -2,  4,  4, $10, 0
-	dbsprite  0, -1,  4,  4, $11, 0
-	dbsprite  0,  0,  4,  4, $12, 0
-	dbsprite  0,  1,  4,  4, $13, 0
-	dbsprite  1, -3,  4,  4, $14, 0
-	dbsprite  1, -2,  4,  4, $15, 0
-	dbsprite  1, -1,  4,  4, $16, 0
-	dbsprite  1,  0,  4,  4, $17, 0
-	dbsprite  1,  1,  4,  4, $18, 0
-
-; unused
 	db 36
 	dbsprite -3, -3,  0,  0, $00, 0
 	dbsprite -2, -3,  0,  0, $01, 0

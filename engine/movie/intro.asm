@@ -1117,15 +1117,9 @@ IntroScene10:
 	ld bc, vTiles1 - vTiles0
 	call Decompress
 
-	ld c, HAPPA
+	ld hl, Intro_KantoStarters
 	ld de, vTiles0 tile $10
-	farcall Intro_GetMonFrontpic
-	ld c, FLAMBEAR
-	ld de, vTiles0 tile $29
-	farcall Intro_GetMonFrontpic
-	ld c, CRUISEAL
-	ld de, vTiles0 tile $42
-	farcall Intro_GetMonFrontpic
+	call Decompress
 
 	ld hl, wSpriteAnimDict
 	ld a, 1
@@ -1334,17 +1328,13 @@ Intro_CheckSCYEvent:
 .scy_jumptable
 	dbw $86, Intro_LoadHappaPalette
 	dbw $87, Intro_HappaAppears
-	dbw $88, Functione53e0
-	dbw $98, Functione53eb
+	dbw $88, Intro_FlashMonPalette
+	dbw $98, Intro_FlashSilhouette
 	dbw $99, Intro_LoadFlambearPalette
-	dbw $af, Intro_FlambearAppears
-	dbw $b0, Functione53e0
-	dbw $c0, Functione53eb
-	dbw $c1, Intro_LoadCruisealPalette
-	dbw $d7, Intro_CruisealAppears
-	dbw $d8, Functione53e0
-	dbw $e8, Functione53eb
-	dbw $e9, Functione5412
+	dbw $bf, Intro_FlambearAppears
+	dbw $c0, Intro_FlashMonPalette
+	dbw $d0, Intro_FlashSilhouette
+	dbw $d1, Intro_LoadCharizardPalette
 	db -1
 
 Intro_HappaAppears:
@@ -1371,14 +1361,14 @@ Intro_CruisealAppears:
 	call InitSpriteAnimStruct
 	ret
 
-Functione53e0:
+Intro_FlashMonPalette:
 	depixel 28, 28, 4, 4
 	call DmgToCgbObjPals
 	xor a
 	call DmgToCgbBGPals
 	ret
 
-Functione53eb:
+Intro_FlashSilhouette:
 	depixel 31, 31, 7, 7
 	call DmgToCgbObjPals
 	ld a, %00111111
@@ -1386,12 +1376,12 @@ Functione53eb:
 	ret
 
 Intro_LoadHappaPalette:
-	ld c, HAPPA
+	ld c, BLASTOISE
 	farcall Intro_LoadMonPalette
 	ret
 
 Intro_LoadFlambearPalette:
-	ld c, FLAMBEAR
+	ld c, VENUSAUR
 	farcall Intro_LoadMonPalette
 	ret
 
@@ -1400,7 +1390,7 @@ Intro_LoadCruisealPalette:
 	farcall Intro_LoadMonPalette
 	ret
 
-Functione5412:
+Intro_LoadCharizardPalette:
 	ldh a, [hCGB]
 	and a
 	ld c, FLAMBEAR
@@ -1607,3 +1597,6 @@ INCBIN "gfx/intro/fire2.2bpp.lz"
 
 Intro_FireGFX3:
 INCBIN "gfx/intro/fire3.2bpp.lz"
+
+Intro_KantoStarters:
+INCBIN "gfx/intro/unused_blastoise_venusaur.2bpp.lz"
